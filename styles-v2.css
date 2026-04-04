@@ -1847,6 +1847,7 @@ h1, h2, h3, h4, h5, h6 {
 
     .hero-globe-wrap {
         height: 50vh;
+        overflow: visible;
     }
 
     .hero-planet-img {
@@ -1856,7 +1857,7 @@ h1, h2, h3, h4, h5, h6 {
 
     .hero-content {
         position: absolute;
-        top: 30vh;
+        top: -8vh;
         left: 50%;
         transform: translateX(-50%);
         z-index: 10;
@@ -1914,6 +1915,7 @@ h1, h2, h3, h4, h5, h6 {
         height: 50dvh;
         position: absolute;
         bottom: 0;
+        overflow: visible;
     }
 
     .hero-planet-img {
@@ -1923,8 +1925,8 @@ h1, h2, h3, h4, h5, h6 {
 
     .hero-content {
         position: absolute;
-        top: 35vh;
-        top: 35dvh;
+        top: -10vh;
+        top: -10dvh;
         left: 50%;
         transform: translateX(-50%);
         z-index: 10;
