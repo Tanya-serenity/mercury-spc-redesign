@@ -1832,12 +1832,21 @@ h1, h2, h3, h4, h5, h6 {
 
 /* iPad Portrait (768px - 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
+    .nav-links {
+        display: none;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
     .hero {
         min-height: 100vh;
+        padding: 0;
     }
 
     .hero-globe-wrap {
-        height: 55vh;
+        height: 50vh;
     }
 
     .hero-planet-img {
@@ -1846,7 +1855,11 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .hero-content {
-        top: 30%;
+        position: absolute;
+        top: 30vh;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
     }
 
     .hero-title {
@@ -1910,8 +1923,8 @@ h1, h2, h3, h4, h5, h6 {
 
     .hero-content {
         position: absolute;
-        top: 18vh;
-        top: 18dvh;
+        top: 35vh;
+        top: 35dvh;
         left: 50%;
         transform: translateX(-50%);
         z-index: 10;
