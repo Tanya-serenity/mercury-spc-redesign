@@ -1840,18 +1840,33 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .hero {
-        padding: 6rem 0 3rem;
+        padding: 0;
         min-height: 100vh;
+        min-height: 100dvh;
     }
 
     .hero-globe-wrap {
         width: 100%;
-        height: 300px;
+        height: 60vh;
+        height: 60dvh;
     }
 
     .hero-planet-img {
-        width: 600px;
-        height: 600px;
+        width: 110vw;
+        height: 110vw;
+    }
+
+    .hero-content {
+        top: 35%;
+    }
+
+    .hero-title {
+        font-size: clamp(1.6rem, 5vw, 2.5rem);
+    }
+
+    .hero-subtitle {
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
     }
 
     .intro-word {
