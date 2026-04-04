@@ -1748,12 +1748,16 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 1024px) {
     .hero-globe-wrap {
         width: 100%;
-        height: 420px;
+        height: 380px;
     }
 
     .hero-planet-img {
-        width: 800px;
-        height: 800px;
+        width: 750px;
+        height: 750px;
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 5.5vw, 4rem);
     }
 
     .philosophy-flow {
@@ -1832,26 +1836,35 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .section {
-        padding: 4rem 0;
+        padding: 2.5rem 0;
     }
 
     .container {
-        padding: 0 1.5rem;
+        padding: 0 1.25rem;
     }
 
     .hero {
-        padding: 6rem 0 3rem;
+        padding: 2rem 0 1rem;
         min-height: auto;
     }
 
     .hero-globe-wrap {
         width: 100%;
-        height: 300px;
+        height: 220px;
     }
 
     .hero-planet-img {
-        width: 600px;
-        height: 600px;
+        width: 400px;
+        height: 400px;
+    }
+
+    .hero-title {
+        font-size: clamp(1.8rem, 5vw, 2.8rem);
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+        letter-spacing: 0.1em;
     }
 
     .intro-word {
@@ -1943,6 +1956,48 @@ h1, h2, h3, h4, h5, h6 {
 
     .problem-statement {
         padding: 2rem;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    .hero {
+        padding: 3.5rem 0 1.5rem;
+        min-height: 70vh;
+    }
+
+    .hero-globe-wrap {
+        height: 240px;
+    }
+
+    .hero-planet-img {
+        width: 400px;
+        height: 400px;
+    }
+
+    .hero-title {
+        font-size: clamp(1.5rem, 4vw, 2.2rem);
+        margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .section {
+        padding: 2.5rem 0;
+    }
+
+    .section-title {
+        font-size: clamp(1.5rem, 3.5vw, 2rem);
+    }
+
+    .intro-title {
+        font-size: clamp(1.5rem, 4vw, 2.2rem);
+    }
+
+    .container {
+        padding: 0 1rem;
     }
 }
 
