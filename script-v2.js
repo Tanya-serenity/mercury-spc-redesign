@@ -1,0 +1,256 @@
+// ============================================
+// Mercury SPC — Home 2 Redesign Interactions
+// ============================================
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // === Mobile Navigation Toggle ===
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (navToggle) {
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+    }
+
+    // === Smooth Scroll ===
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            const targetEl = document.querySelector(targetId);
+            if (targetEl) {
+                e.preventDefault();
+                const offset = 80;
+                const top = targetEl.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+
+                if (navLinks && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    navToggle.classList.remove('active');
+                }
+            }
+        });
+    });
+
+    // === Thermometer Scroll Progress Bar ===
+    const thermometerFill = document.getElementById('thermometerFill');
+
+    function updateThermometer() {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = Math.min((scrollTop / docHeight) * 100, 100);
+        if (thermometerFill) {
+            thermometerFill.style.height = scrollPercent + '%';
+        }
+    }
+
+    window.addEventListener('scroll', updateThermometer, { passive: true });
+    updateThermometer();
+
+    // === Section 6: Thermometer fill animation ===
+    const thermoMercury = document.getElementById('thermoMercury');
+    let thermoAnimated = false;
+
+    const thermoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !thermoAnimated) {
+                thermoAnimated = true;
+                if (thermoMercury) {
+                    // Animate from 20% to 75% (just before the 99% red line)
+                    thermoMercury.style.height = '75%';
+                }
+                thermoObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    const thermoSection = document.getElementById('thermoMercury');
+    if (thermoSection) {
+        thermoObserver.observe(thermoSection.closest('.section-thermometer'));
+    }
+
+    // === Scroll Reveal Animations ===
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Fade-in elements
+    const fadeElements = document.querySelectorAll(
+        '.section-header, .section-tag, .section-title, .section-desc, ' +
+        '.hero-title, .hero-subtitle, ' +
+        '.problem-statement, .cta-content, ' +
+        '.highlight-block, .thermometer-text, .thermometer-visual'
+    );
+
+    fadeElements.forEach(el => {
+        el.classList.add('fade-in');
+        observer.observe(el);
+    });
+
+    // Staggered grid animations
+    const staggerElements = document.querySelectorAll(
+        '.pointers-grid, .expansion-grid, .execution-grid, ' +
+        '.services-grid, .objectives-grid, .hidden-costs-grid, ' +
+        '.advocacy-grid, .contact-details, .letoffs-grid'
+    );
+
+    staggerElements.forEach(el => {
+        el.classList.add('stagger-children');
+        observer.observe(el);
+    });
+
+    // === Card Hover Effects ===
+    const cards = document.querySelectorAll(
+        '.pointer-card, .expansion-card, .execution-card, ' +
+        '.service-card, .objective-card, .cost-card'
+    );
+
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transition = 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+        });
+    });
+
+    // === Navigation Scroll Effect ===
+    const nav = document.querySelector('.nav');
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll > 100) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+
+    // === Contact Form Handling ===
+    const contactForm = document.getElementById('contactForm');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const btn = contactForm.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+            btn.style.opacity = '0.7';
+
+            setTimeout(() => {
+                btn.textContent = 'Partnership Initiated!';
+                btn.style.background = '#367589';
+                btn.style.opacity = '1';
+
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                    contactForm.reset();
+                }, 2500);
+            }, 1500);
+        });
+    }
+
+    // === Typewriter Effect for Hero Title ===
+    const heroTitle = document.querySelector('.hero-title');
+    if (heroTitle) {
+        const lines = heroTitle.querySelectorAll('.title-line');
+        lines.forEach((line, index) => {
+            line.style.opacity = '0';
+            line.style.transform = 'translateY(20px)';
+            line.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+            line.style.transitionDelay = `${index * 0.15}s`;
+
+            setTimeout(() => {
+                line.style.opacity = '1';
+                line.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    }
+
+    // === Cursor Glow Effect (Desktop) ===
+    if (window.innerWidth > 1024) {
+        const cursor = document.createElement('div');
+        cursor.className = 'cursor-glow';
+        cursor.style.cssText = `
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(54, 117, 137, 0.06) 0%, rgba(212, 168, 67, 0.02) 40%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease;
+        `;
+        document.body.appendChild(cursor);
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+    }
+
+    // === Mobile Menu Styles ===
+    const style = document.createElement('style');
+    style.textContent = `
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1.5rem 2rem;
+                gap: 1rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 0.75rem 0;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .nav-cta {
+                margin-top: 0.5rem;
+                text-align: center;
+            }
+
+            .nav-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+        }
+    `;
+    document.head.appendChild(style);
+
+    console.log('Mercury SPC — Home 2 Redesign Loaded');
+
+});
