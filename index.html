@@ -7,9 +7,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260320v5">
+    <link rel="stylesheet" href="styles-v2.css">
 </head>
 <body>
+
+    <!-- Thermometer Progress Bar -->
+    <div class="thermometer-progress" id="thermometerProgress">
+        <div class="thermometer-track">
+            <div class="thermometer-fill" id="thermometerFill"></div>
+            <div class="thermometer-bulb"></div>
+        </div>
+    </div>
 
     <!-- Navigation -->
     <nav class="nav">
@@ -19,8 +27,8 @@
                 <span class="logo-badge">SPC</span>
             </a>
             <div class="nav-links" id="navLinks">
-                <a href="#philosophy">Philosophy</a>
-                <a href="#philosophy">Growth</a>
+                <a href="#philosophy">Foundations</a>
+                <a href="#growth">Growth</a>
                 <a href="#what-we-do">What We Do</a>
                 <a href="#execution">Execution</a>
                 <a href="#services">Services</a>
@@ -33,97 +41,32 @@
     </nav>
 
     <!-- ==============================
-         HERO
+         SECTION 1 — HERO
     ============================== -->
-    <header class="hero">
+    <header class="hero" id="home">
         <div class="hero-bg"></div>
-        <!-- Sketch circles decoration -->
-        <svg class="hero-sketch" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="300" cy="300" r="200" stroke="rgba(54,117,137,0.12)" stroke-width="1.5" stroke-dasharray="8 6" class="sketch-circle spin-slow"/>
-            <circle cx="300" cy="300" r="270" stroke="rgba(54,117,137,0.08)" stroke-width="1" stroke-dasharray="4 8" class="sketch-circle spin-reverse"/>
-            <circle cx="300" cy="300" r="130" stroke="rgba(54,117,137,0.15)" stroke-width="1.5" class="sketch-circle spin-slow"/>
-        </svg>
-
-        <div class="container">
+        <!-- Planet image rising from bottom, title centered inside the arc -->
+        <div class="hero-globe-wrap">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    <span class="title-line">Mercury</span>
-                    <span class="title-line accent">SPC</span>
+                    <span class="title-line">Mercury</span><span class="title-line accent">SPC</span>
                 </h1>
-                <div class="hero-subtitle">Strategy & Planning Council</div>
+                <div class="hero-subtitle">Strategy &amp; Planning Council</div>
             </div>
-            <div class="hero-visual">
-                <!-- Sketchy concept diagram -->
-                <svg class="hero-diagram" viewBox="0 0 440 440" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Outer orbit ring -->
-                    <ellipse cx="220" cy="220" rx="200" ry="200" stroke="rgba(54,117,137,0.15)" stroke-width="1.5" stroke-dasharray="8 5" class="spin-slow"/>
-                    <ellipse cx="220" cy="220" rx="155" ry="155" stroke="rgba(54,117,137,0.1)" stroke-width="1" stroke-dasharray="4 6" class="spin-reverse"/>
-
-                    <!-- Main center circle: Perpetual Succession -->
-                    <circle cx="220" cy="220" r="70" stroke="rgba(54,117,137,0.4)" stroke-width="2" stroke-dasharray="6 4" fill="rgba(54,117,137,0.04)"/>
-                    <text x="220" y="212" font-family="Caveat" font-size="16" fill="#367589" text-anchor="middle" font-weight="600">Perpetual</text>
-                    <text x="220" y="234" font-family="Caveat" font-size="16" fill="#367589" text-anchor="middle" font-weight="600">Succession</text>
-
-                    <!-- Top node: Strategy -->
-                    <circle cx="220" cy="55" r="38" stroke="rgba(54,117,137,0.3)" stroke-width="1.5" stroke-dasharray="5 4" fill="rgba(54,117,137,0.03)"/>
-                    <text x="220" y="58" font-family="Caveat" font-size="13" fill="#4A8FA3" text-anchor="middle">Strategy</text>
-
-                    <!-- Right node: Vision -->
-                    <circle cx="385" cy="220" r="38" stroke="rgba(54,117,137,0.3)" stroke-width="1.5" stroke-dasharray="5 4" fill="rgba(54,117,137,0.03)"/>
-                    <text x="385" y="223" font-family="Caveat" font-size="13" fill="#4A8FA3" text-anchor="middle">Vision</text>
-
-                    <!-- Bottom node: Execution -->
-                    <circle cx="220" cy="385" r="38" stroke="rgba(54,117,137,0.3)" stroke-width="1.5" stroke-dasharray="5 4" fill="rgba(54,117,137,0.03)"/>
-                    <text x="220" y="388" font-family="Caveat" font-size="13" fill="#4A8FA3" text-anchor="middle">Execution</text>
-
-                    <!-- Left node: Alignment -->
-                    <circle cx="55" cy="220" r="38" stroke="rgba(54,117,137,0.3)" stroke-width="1.5" stroke-dasharray="5 4" fill="rgba(54,117,137,0.03)"/>
-                    <text x="55" y="223" font-family="Caveat" font-size="13" fill="#4A8FA3" text-anchor="middle">Alignment</text>
-
-                    <!-- Connecting curved arrows (hand-drawn style) -->
-                    <path d="M245 90 Q300 130 345 195" stroke="rgba(54,117,137,0.2)" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-dasharray="3 3"/>
-                    <path d="M345 250 Q310 320 255 360" stroke="rgba(54,117,137,0.2)" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-dasharray="3 3"/>
-                    <path d="M185 360 Q130 320 95 250" stroke="rgba(54,117,137,0.2)" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-dasharray="3 3"/>
-                    <path d="M95 195 Q130 130 195 90" stroke="rgba(54,117,137,0.2)" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-dasharray="3 3"/>
-
-                    <!-- Small dot markers on the orbit -->
-                    <circle cx="310" cy="80" r="4" fill="rgba(54,117,137,0.3)"/>
-                    <circle cx="370" cy="310" r="4" fill="rgba(54,117,137,0.3)"/>
-                    <circle cx="130" cy="360" r="4" fill="rgba(54,117,137,0.3)"/>
-                    <circle cx="70" cy="130" r="4" fill="rgba(54,117,137,0.3)"/>
-
-                    <!-- Handwritten annotations -->
-                    <text x="330" y="72" font-family="Caveat" font-size="11" fill="rgba(54,117,137,0.5)" transform="rotate(-25 330 72)">circle-loop</text>
-                    <text x="340" y="350" font-family="Caveat" font-size="11" fill="rgba(54,117,137,0.5)" transform="rotate(15 340 350)">feedback</text>
-                    <text x="55" y="370" font-family="Caveat" font-size="11" fill="rgba(54,117,137,0.5)" transform="rotate(25 55 370)">adapt</text>
-
-                    <!-- Small accent sketchy marks -->
-                    <path d="M160 155 L168 148" stroke="rgba(54,117,137,0.2)" stroke-width="1"/>
-                    <path d="M275 155 L267 148" stroke="rgba(54,117,137,0.2)" stroke-width="1"/>
-                    <path d="M275 285 L267 292" stroke="rgba(54,117,137,0.2)" stroke-width="1"/>
-                    <path d="M160 285 L168 292" stroke="rgba(54,117,137,0.2)" stroke-width="1"/>
-                </svg>
-
-                <!-- Hand-drawn style text annotation -->
-                <div class="sketch-annotation">
-                    <span class="sketch-handwriting">finite &rarr; infinite</span>
-                    <svg class="sketch-arrow" viewBox="0 0 80 40" fill="none"><path d="M5 35 Q30 5 75 15" stroke="rgba(54,117,137,0.5)" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M65 8 L75 15 L65 20" stroke="rgba(54,117,137,0.5)" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-                </div>
-            </div>
+            <img src="mercury%20hero%20image%20.png" class="hero-planet-img" alt="">
         </div>
     </header>
 
     <!-- ==============================
-         INTRO SECTION
+         SECTION 2 — ANIMATED INTRO
     ============================== -->
-    <section class="section" id="intro">
+    <section class="section section-intro" id="intro">
         <div class="container">
             <div class="intro-content">
-                <h2 class="section-title">
-                    <span class="title-line">Organisational</span>
-                    <span class="title-line accent">Sustainability</span>
-                    <span class="title-line">&amp; Environmental</span>
-                    <span class="title-line accent">Sustainability</span>
+                <h2 class="section-title intro-title">
+                    <span class="title-line">Organisational <span class="accent">Sustainability</span></span>
+                    <span class="title-line">Environmental <span class="accent">Sustainability</span></span>
+                    <span class="title-line">&amp; <span class="accent">Strategic Political Insight</span></span>
                 </h2>
                 <p class="intro-text">
                     Sustainability first and foremost is the outcome of thinking strategy, vision and execution. Where mundane tactical execution takes precedent over long term thinking.
@@ -133,20 +76,20 @@
     </section>
 
     <!-- ==============================
-         PROBLEM STATEMENT
+         SECTION 3 — STRATEGIC FRAMING
     ============================== -->
-    <section class="section section-dark" id="problem">
+    <section class="section section-problem" id="problem">
         <div class="container">
-            <div class="problem-content">
+            <div class="problem-statement" id="problemStatement">
                 <div class="section-tag">Defining How</div>
-                <h2 class="section-title">Problem Statement</h2>
-                <p class="problem-text">Sustainability of people, products and processes, built around ROI and a fiscally positive framework.</p>
+                <h2 class="section-title">The Real Challenge</h2>
+                <p class="problem-text">Sustainability strategy has been hijacked by ESG checklists, HR initiatives and conventional CSR. When treated purely as a compliance exercise or a marketing tool, it fails. It creates rigid structures that cannot survive changing environments and masks the hidden costs of a misaligned organisation.</p>
             </div>
         </div>
     </section>
 
     <!-- ==============================
-         PHILOSOPHY - ESSENCE OF SUSTAINABILITY
+         SECTION 3 — PHILOSOPHY / ESSENCE BEYOND ESG
     ============================== -->
     <section class="section" id="philosophy">
         <div class="container">
@@ -156,16 +99,17 @@
             </div>
 
             <div class="content-block highlight-block">
-                <p class="large-text">Sustainability strategy has been hijacked by ESG checklists, HR initiatives and conventional CSR. When treated purely as a compliance exercise or a marketing tool, it fails. It creates rigid structures that cannot survive changing environments and masks the hidden costs of a misaligned organisation.</p>
+                <p class="large-text">Sustainability of people, products and processes, built around ROI and a fiscally positive framework.</p>
             </div>
 
-            <!-- Perpetuity Principle Card -->
-            <div class="philosophy-grid">
-                <div class="philosophy-card card-featured">
-                    <div class="card-label">The Perpetuity Principle</div>
-                    <!-- Sketch circle decoration -->
-                    <div class="card-sketch-circle"></div>
-                    <p class="card-text">At its core, corporate sustainability is rooted in the concept of Perpetual Succession. A company is designed to exist in perpetuity—a legal "immortality" where the entity remains distinct from its founders or stakeholders. To achieve this, an organization must transition from playing Finite Games (with set rules and a defined end) to Infinite Games.</p>
+            <div class="philosophy-flow">
+                <!-- Pointer 1: Perpetuity -->
+                <div class="pointer-card">
+                    <div class="pointer-icon">
+                        <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M24 14v20M14 24h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </div>
+                    <h3>The Perpetuity Principle</h3>
+                    <p>At its core, corporate sustainability is rooted in the concept of Perpetual Succession. A company is designed to exist in perpetuity—a legal "immortality" where the entity remains distinct from its founders or stakeholders.</p>
                     <div class="card-highlight">
                         <strong>The Objective:</strong> In an infinite game, the goal is not to "win," but to stay in the game.
                     </div>
@@ -175,56 +119,63 @@
                     </div>
                 </div>
 
-                <!-- Ship of Theseus -->
-                <div class="philosophy-card">
-                    <div class="card-label">The Ship of Theseus</div>
-                    <div class="card-sketch-circle"></div>
-                    <p class="card-text">To remain sustainable, an organization must embrace the Ship of Theseus paradox; it must be willing to replace every "plank" (processes, products, and structures) to adapt to new environments while maintaining the core integrity of its origin statement.</p>
+                <!-- Pointer 2: Ship of Theseus -->
+                <div class="pointer-card">
+                    <div class="pointer-icon">
+                        <svg viewBox="0 0 48 48" fill="none"><path d="M8 38 Q24 10 40 38" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="24" cy="20" r="8" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2"/></svg>
+                    </div>
+                    <h3>The Ship of Theseus</h3>
+                    <p>To remain sustainable, an organization must embrace the Ship of Theseus paradox; it must be willing to replace every "plank" (processes, products, and structures) to adapt to new environments while maintaining the core integrity of its origin statement.</p>
                     <div class="card-highlight">
                         <strong>Adaptation is not just a reaction;</strong> it is the ultimate form of identity preservation.
                     </div>
                 </div>
-            </div>
 
-            <!-- Handwritten-style Sketch Panel: Finite vs Infinite -->
-            <div class="sketch-panel">
-                <div class="sketch-panel-inner">
-                    <h3 class="sketch-panel-title">Finite Games vs Infinite Games</h3>
-                    <div class="sketch-comparison">
-                        <div class="sketch-side">
-                            <div class="sketch-circle-label finite">Finite</div>
-                            <ul class="sketch-list">
-                                <li>Set rules</li>
-                                <li>Defined end</li>
-                                <li>Play to win</li>
-                                <li>Short-term thinking</li>
-                            </ul>
+                <!-- Handwritten Sketch Panel: Finite vs Infinite (KEPT & ENLARGED) -->
+                <div class="sketch-panel">
+                    <div class="sketch-panel-inner">
+                        <h3 class="sketch-panel-title">Finite Games vs Infinite Games</h3>
+                        <div class="sketch-comparison">
+                            <div class="sketch-side">
+                                <div class="sketch-circle-label finite">Finite</div>
+                                <ul class="sketch-list">
+                                    <li>Set rules</li>
+                                    <li>Defined end</li>
+                                    <li>Play to win</li>
+                                    <li>Short-term thinking</li>
+                                </ul>
+                            </div>
+                            <div class="sketch-vs">
+                                <svg viewBox="0 0 60 120" fill="none" class="sketch-arrow-down">
+                                    <path d="M30 5 C20 40, 40 60, 30 115" stroke="var(--teal)" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="4 3"/>
+                                    <path d="M22 105 L30 118 L38 105" stroke="var(--teal)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                                </svg>
+                                <span class="sketch-handwriting">transition</span>
+                            </div>
+                            <div class="sketch-side">
+                                <div class="sketch-circle-label infinite">Infinite</div>
+                                <ul class="sketch-list">
+                                    <li>Evolving rules</li>
+                                    <li>No defined end</li>
+                                    <li>Play to keep playing</li>
+                                    <li>Perpetual thinking</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="sketch-vs">
-                            <svg viewBox="0 0 60 120" fill="none" class="sketch-arrow-down">
-                                <path d="M30 5 C20 40, 40 60, 30 115" stroke="var(--teal)" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="4 3"/>
-                                <path d="M22 105 L30 118 L38 105" stroke="var(--teal)" stroke-width="2" fill="none" stroke-linecap="round"/>
-                            </svg>
-                            <span class="sketch-handwriting">transition</span>
+                        <div class="sketch-annotation-inline">
+                            <span class="sketch-handwriting">To achieve perpetual succession, an organization must transition from playing Finite Games (with set rules and a defined end) to Infinite Games; where the goal shifts from winning to sustaining play across changing conditions.</span>
                         </div>
-                        <div class="sketch-side">
-                            <div class="sketch-circle-label infinite">Infinite</div>
-                            <ul class="sketch-list">
-                                <li>Evolving rules</li>
-                                <li>No defined end</li>
-                                <li>Play to keep playing</li>
-                                <li>Perpetual thinking</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Handwritten annotation -->
-                    <div class="sketch-annotation-inline">
-                        <span class="sketch-handwriting">"Nothing is perpetual but prolonging one's existence in harmony (growth), rather than predatory expansion is a very key aspect of sustainability. The theory of long tails is the most obvious outcome of harmonic co-existence and growth."</span>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Harmonic vs Predatory Expansion -->
+    <!-- ==============================
+         SECTION 4 — GROWTH STRATEGY
+    ============================== -->
+    <section class="section section-gray" id="growth">
+        <div class="container">
             <div class="section-header">
                 <div class="section-tag">Growth Strategy</div>
                 <h2 class="section-title">Harmonic vs. Predatory Expansion</h2>
@@ -241,25 +192,22 @@
                         <h3>Harmonic Expansion</h3>
                     </div>
                     <p class="expansion-intro">This prioritizes co-existence and symbiotic growth, creating ecosystems where all participants derive value.</p>
-
                     <div class="expansion-examples">
                         <div class="example-item">
                             <strong>Tech Ecosystems:</strong>
-                            <p>The relationship between Apple and Google regarding mobile applications, or the deep integration between Intel, ASML, and TSMC, demonstrates how leaders can grow in harmony by creating interdependencies that safeguard the entire industry's future.</p>
+                            <p>The relationship between Apple and Google regarding mobile applications, or the deep integration between Intel, ASML, and TSMC—leaders growing in harmony by creating interdependencies that safeguard the entire industry's future.</p>
                         </div>
                         <div class="example-item">
                             <strong>Geopolitical Alliances:</strong>
-                            <p>Strategic alignment between global powers reflects harmonic growth. By prioritizing partners in critical sectors, such as medical vaccine development or high-tech network infrastructure, these entities ensure long-term stability over short-term cost-cutting.</p>
+                            <p>Strategic alignment between global powers reflects harmonic growth. By prioritizing partners in critical sectors, these entities ensure long-term stability over short-term cost-cutting.</p>
                         </div>
                     </div>
-
-                    <!-- Hand-drawn sketch circles showing interconnection -->
                     <div class="sketch-interconnect">
                         <svg viewBox="0 0 200 80" fill="none">
-                            <circle cx="50" cy="40" r="30" stroke="#367589" stroke-width="1.5" stroke-dasharray="4 3"/>
-                            <circle cx="100" cy="40" r="30" stroke="#4A8FA3" stroke-width="1.5" stroke-dasharray="4 3"/>
-                            <circle cx="150" cy="40" r="30" stroke="#367589" stroke-width="1.5" stroke-dasharray="4 3"/>
-                            <text x="100" y="78" font-family="Caveat" font-size="12" fill="#367589" text-anchor="middle">symbiotic growth</text>
+                            <circle cx="50" cy="40" r="30" stroke="var(--teal)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                            <circle cx="100" cy="40" r="30" stroke="var(--gold)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                            <circle cx="150" cy="40" r="30" stroke="var(--teal)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                            <text x="100" y="78" font-family="Caveat" font-size="12" fill="var(--teal)" text-anchor="middle">symbiotic growth</text>
                         </svg>
                     </div>
                 </div>
@@ -272,68 +220,82 @@
                         </div>
                         <h3>Predatory Expansion (The Monopolistic Risk)</h3>
                     </div>
-                    <p class="expansion-intro">Expansion that seeks total market dominance through aggressive consolidation or "poaching" often creates a fragile environment. Predatory expansion can only survive if it has complete control over the market. Which is flawed coz - no rules.</p>
-
+                    <p class="expansion-intro">Expansion that seeks total market dominance through aggressive consolidation often creates a fragile environment. Predatory expansion can only survive with complete market control—which is flawed because: no rules.</p>
                     <div class="expansion-warning-box">
                         <strong>Political Sustainability Case Study:</strong>
-                        <p>Historically, aggressive political consolidation, where partners/parties are absorbed rather than empowered, can dampen long-term sustainability. When smaller allies feel their interests are being sacrificed to a central power, they become hesitant to cooperate even on beneficial agendas. This leads to a loss of absolute leverage when environmental shifts occur, forcing a late-stage return to concessions that could have been handled harmonically earlier.</p>
+                        <p>Historically, aggressive political consolidation—where partners/parties are absorbed rather than empowered—dampens long-term sustainability. When smaller allies feel their interests are sacrificed to a central power, they become hesitant to cooperate even on beneficial agendas.</p>
                     </div>
-
-                    <!-- Sketch: single dominating circle -->
                     <div class="sketch-interconnect">
                         <svg viewBox="0 0 200 80" fill="none">
-                            <circle cx="100" cy="40" r="35" stroke="var(--warning)" stroke-width="2" stroke-dasharray="4 3"/>
-                            <circle cx="50" cy="40" r="15" stroke="var(--light-dim)" stroke-width="1" stroke-dasharray="3 4" opacity="0.4"/>
-                            <circle cx="150" cy="40" r="15" stroke="var(--light-dim)" stroke-width="1" stroke-dasharray="3 4" opacity="0.4"/>
-                            <text x="100" y="78" font-family="Caveat" font-size="12" fill="var(--warning)" text-anchor="middle">fragile dominance</text>
+                            <circle cx="100" cy="40" r="35" stroke="var(--red-glow)" stroke-width="2" stroke-dasharray="4 3"/>
+                            <circle cx="50" cy="40" r="15" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 4" opacity="0.4"/>
+                            <circle cx="150" cy="40" r="15" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 4" opacity="0.4"/>
+                            <text x="100" y="78" font-family="Caveat" font-size="12" fill="var(--red-glow)" text-anchor="middle">fragile dominance</text>
                         </svg>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
-
     <!-- ==============================
-         WHEN ARE WE NEEDED
+         SECTION 5 — WHEN MERCURY SPC IS REVEALED
     ============================== -->
-    <section class="section section-cta-mid">
+    <section class="section section-thermometer" id="when-needed">
         <div class="container">
-            <div class="cta-mid-content">
-                <div class="section-tag">When Are We Needed?</div>
-                <h2 class="section-title">Before Friction Becomes Fissures</h2>
-                <p class="cta-text">We prefer to enter the picture before friction & fissures become visible; or at the very least before long lasting malaise or decay has permanently weaken the structure. Discord between internal and external (partner stakeholders) within an organization is no longer a theoretical risk, but a measurable drain on resources.</p>
-                <!-- Sketch arrow annotation -->
-                <div class="sketch-annotation-block">
-                    <svg viewBox="0 0 120 50" fill="none" class="sketch-curved-arrow"><path d="M10 40 Q40 5 110 20" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M100 12 L110 20 L100 26" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-                    <span class="sketch-handwriting light">before it's too late</span>
+            <div class="thermometer-section-content">
+                <div class="thermometer-visual">
+                    <div class="thermo-device">
+                        <div class="thermo-tube">
+                            <div class="thermo-mercury" id="thermoMercury"></div>
+                            <div class="thermo-marks">
+                                <span class="thermo-mark" style="bottom: 10%">10%</span>
+                                <span class="thermo-mark" style="bottom: 30%">30%</span>
+                                <span class="thermo-mark" style="bottom: 50%">50%</span>
+                                <span class="thermo-mark" style="bottom: 70%">70%</span>
+                                <span class="thermo-mark thermo-danger" style="bottom: 90%">90%</span>
+                                <span class="thermo-mark thermo-critical" style="bottom: 99%">99%</span>
+                            </div>
+                            <div class="thermo-redline"></div>
+                        </div>
+                        <div class="thermo-bulb">
+                            <div class="thermo-bulb-fill"></div>
+                        </div>
+                    </div>
+                    <div class="thermo-annotation">
+                        <span class="sketch-handwriting">before it's too late</span>
+                        <svg viewBox="0 0 80 40" fill="none" class="sketch-arrow"><path d="M75 35 Q50 5 10 15" stroke="var(--red-glow)" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M18 8 L10 15 L18 22" stroke="var(--red-glow)" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+                    </div>
+                </div>
+                <div class="thermometer-text">
+                    <div class="section-tag">When Are We Needed?</div>
+                    <h2 class="section-title">Before Friction <br>Becomes Fissures</h2>
+                    <p class="cta-text">We prefer to enter the picture before friction &amp; fissures become visible; or at the very least before long lasting malaise or decay has permanently weakened the structure. Discord between internal and external stakeholders within an organization is no longer a theoretical risk, but a measurable drain on resources.</p>
+                    <div class="thermo-insight">
+                        <div class="insight-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 9v2m0 4h.01"/><circle cx="12" cy="12" r="10"/></svg>
+                        </div>
+                        <p>The thermometer represents organizational health.<br> We enter <strong>before</strong> the mercury hits the red line.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ==============================
-         WHAT WE DO
+         SECTION 5 — WHAT WE DO
     ============================== -->
     <section class="section" id="what-we-do">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header section-header-wide">
                 <div class="section-tag">What We Do</div>
                 <h2 class="section-title">Your Strategic Partner</h2>
+                <p class="section-desc what-we-do-desc">Mercury SPC acts as your strategic partner, bridging the gap between high-level vision and operational execution. Our objective is to move you from "Strategic Intent" to "Practical Alignment." We evaluate whether your vision is truly built for long-term architecting for enduring longevity rather than chasing finite, short-term goals. We align the C-Suite and the Front Line so that the entire organization operates as a cohesive, adaptable unit that has the potential of perpetual existence.</p>
             </div>
 
-            <div class="what-we-do-main">
-                <div class="wwd-primary-card">
-                    <p class="wwd-main-text">Mercury SPC acts as your strategic partner, bridging the gap between high-level vision and operational execution. Our objective is to move you from "Strategic Intent" to "Practical Alignment." We evaluate whether your vision is truly built for long-term architecting for enduring longevity rather than chasing finite, short-term goals. We align the C-Suite and the Front Line so that the entire organization operates as a cohesive, adaptable unit that has the potential of perpetual existence.</p>
-                </div>
-            </div>
-
-            <!-- Objectives -->
             <div class="objectives-section">
                 <h3 class="objectives-title">Our Objectives and Goals</h3>
                 <p class="objectives-intro">Mercury SPC's primary objective is to move organizations from Strategic Intent to Practical Alignment. Key goals include:</p>
-
                 <div class="objectives-grid">
                     <div class="objective-card">
                         <div class="objective-number">01</div>
@@ -356,7 +318,6 @@
                         <p>Implementing practices that prioritize perpetual thinking. (long-term benefits over short-term or finite goals)</p>
                     </div>
                 </div>
-
                 <div class="objectives-summary">
                     <p>By focusing on these objectives, we ensure that an organization's output is maximized through cohesive thinking and a vision that is both attainable and enduring.</p>
                 </div>
@@ -365,7 +326,7 @@
     </section>
 
     <!-- ==============================
-         HOW WE EXECUTE
+         SECTION — HOW WE EXECUTE (with planetary loop animation)
     ============================== -->
     <section class="section section-dark" id="execution">
         <div class="container">
@@ -375,43 +336,56 @@
                 <p class="section-desc">We execute through a continuous circle-loop of feedback, adjustment, and strategic problem framing.</p>
             </div>
 
-            <!-- Circle-loop sketch diagram -->
+            <!-- Circle-loop planetary animation (KEPT) -->
             <div class="circle-loop-sketch">
-                <svg viewBox="0 0 400 200" fill="none" class="loop-svg">
-                    <ellipse cx="200" cy="100" rx="170" ry="70" stroke="var(--teal-light)" stroke-width="1.5" stroke-dasharray="6 4" class="sketch-circle spin-slow"/>
-                    <circle cx="80" cy="100" r="40" stroke="var(--accent)" stroke-width="1.5" fill="rgba(50,224,196,0.08)"/>
-                    <circle cx="200" cy="50" r="40" stroke="var(--teal)" stroke-width="1.5" fill="rgba(13,115,119,0.08)"/>
-                    <circle cx="320" cy="100" r="40" stroke="var(--accent)" stroke-width="1.5" fill="rgba(50,224,196,0.08)"/>
-                    <text x="80" y="97" font-family="Caveat" font-size="11" fill="var(--accent)" text-anchor="middle">Feedback</text>
-                    <text x="80" y="112" font-family="Caveat" font-size="11" fill="var(--accent)" text-anchor="middle">Loop</text>
-                    <text x="200" y="47" font-family="Caveat" font-size="11" fill="var(--teal-light)" text-anchor="middle">Strategic</text>
-                    <text x="200" y="62" font-family="Caveat" font-size="11" fill="var(--teal-light)" text-anchor="middle">Framing</text>
-                    <text x="320" y="97" font-family="Caveat" font-size="11" fill="var(--accent)" text-anchor="middle">Adjustment</text>
-                    <text x="320" y="112" font-family="Caveat" font-size="11" fill="var(--accent)" text-anchor="middle">Cycle</text>
-                    <!-- connecting arrows -->
-                    <path d="M115 80 Q155 45 165 55" stroke="rgba(255,255,255,0.3)" stroke-width="1" fill="none" stroke-linecap="round"/>
-                    <path d="M235 55 Q260 50 285 80" stroke="rgba(255,255,255,0.3)" stroke-width="1" fill="none" stroke-linecap="round"/>
-                    <path d="M290 135 Q200 170 115 130" stroke="rgba(255,255,255,0.3)" stroke-width="1" fill="none" stroke-linecap="round"/>
-                </svg>
+                <div class="loop-container">
+                    <!-- Orbital ellipse -->
+                    <svg viewBox="0 0 500 250" fill="none" class="loop-svg">
+                        <ellipse cx="250" cy="125" rx="220" ry="90" stroke="var(--teal-light)" stroke-width="1.5" stroke-dasharray="6 4" class="spin-slow"/>
+                        <ellipse cx="250" cy="125" rx="180" ry="70" stroke="rgba(74,143,163,0.15)" stroke-width="1" stroke-dasharray="3 5" class="spin-reverse"/>
+
+                        <!-- Dashed orbital lines -->
+                        <line x1="50" y1="20" x2="150" y2="230" stroke="var(--teal)" stroke-width="1" stroke-dasharray="8 6" opacity="0.3"/>
+                        <line x1="350" y1="20" x2="450" y2="230" stroke="var(--teal)" stroke-width="1" stroke-dasharray="8 6" opacity="0.3"/>
+
+                        <!-- Node: Feedback Loop -->
+                        <circle cx="80" cy="125" r="50" stroke="var(--teal)" stroke-width="1.5" fill="rgba(54,117,137,0.12)"/>
+                        <text x="80" y="120" font-family="Caveat" font-size="14" fill="var(--teal-light)" text-anchor="middle">Feedback</text>
+                        <text x="80" y="138" font-family="Caveat" font-size="14" fill="var(--teal-light)" text-anchor="middle">Loop</text>
+
+                        <!-- Node: Strategic Framing -->
+                        <circle cx="250" cy="55" r="50" stroke="var(--teal)" stroke-width="1.5" fill="rgba(54,117,137,0.12)"/>
+                        <text x="250" y="50" font-family="Caveat" font-size="14" fill="var(--teal-light)" text-anchor="middle">Strategic</text>
+                        <text x="250" y="68" font-family="Caveat" font-size="14" fill="var(--teal-light)" text-anchor="middle">Framing</text>
+
+                        <!-- Node: Adjustment Cycle -->
+                        <circle cx="420" cy="125" r="50" stroke="var(--teal)" stroke-width="1.5" fill="rgba(54,117,137,0.12)"/>
+                        <text x="420" y="120" font-family="Caveat" font-size="14" fill="var(--teal-light)" text-anchor="middle">Adjustment</text>
+                        <text x="420" y="138" font-family="Caveat" font-size="14" fill="var(--teal-light)" text-anchor="middle">Cycle</text>
+
+                        <!-- Connecting curves -->
+                        <path d="M125 100 Q185 55 205 60" stroke="rgba(255,255,255,0.25)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                        <path d="M295 60 Q340 65 375 100" stroke="rgba(255,255,255,0.25)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                        <path d="M390 170 Q250 220 120 165" stroke="rgba(255,255,255,0.25)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                    </svg>
+                </div>
             </div>
 
             <div class="execution-grid">
                 <div class="execution-card">
                     <div class="execution-number">01</div>
                     <h3>Cyber-Mapping</h3>
-                    <p>Mapping is the strategic mapping of your positional strategies. Many organizations possess powerful internal "conclaves" and unique strengths that they fail to leverage or communicate to the outside world. Cyber-mapping identifies these latent assets, translating your under-utilized internal capabilities into external strategic leverage.</p>
+                    <p>Mapping is the strategic mapping of your positional strategies. Many organizations possess powerful internal "conclaves" and unique strengths that they fail to leverage. Cyber-mapping identifies these latent assets, translating under-utilized internal capabilities into external strategic leverage.</p>
                 </div>
-
                 <div class="execution-card">
                     <div class="execution-number">02</div>
                     <h3>Strategy &amp; Design Thinking</h3>
-                    <p>This is the discipline of precision in the "now". We apply rigorous creative principles and Strategic Problem Framing to address the root causes of challenges rather than just symptoms. This ensures that the organization is perfectly poised for immediate execution.</p>
+                    <p>This is the discipline of precision in the "now". We apply rigorous creative principles and Strategic Problem Framing to address the root causes of challenges rather than just symptoms.</p>
                 </div>
-
                 <div class="execution-card">
                     <div class="execution-number">03</div>
                     <h3>Synergistic Strategic Alliances</h3>
-                    <p>We identify and foster Synergistic Strategic Alliances.</p>
+                    <p>We identify and foster Synergistic Strategic Alliances—partnerships where the whole is greater than the sum of its parts.</p>
                 </div>
             </div>
         </div>
@@ -428,26 +402,22 @@
             </div>
 
             <div class="services-grid">
-                <!-- Vision Mismatch -->
                 <div class="service-card">
                     <h3>Vision Mismatch</h3>
-                    <p>A vision mismatch occurs when an economic/ political/governmental organization's stated goals are no longer attainable or sustainable within its current framework. This often happens when a rigid structure fails to adapt to a changing environment, leading to a disconnect between leadership's intent and the organization's actual capabilities. During a vision evaluation, Mercury SPC assesses whether a vision is truly long-term or if it has become a "short-term/finite" that compromises the organization's future.</p>
-
+                    <p>A vision mismatch occurs when an organization's stated goals are no longer attainable or sustainable within its current framework. This happens when a rigid structure fails to adapt, leading to a disconnect between leadership's intent and actual capabilities.</p>
                     <div class="service-indicators">
                         <h4>Key indicators of a mismatch include:</h4>
                         <ul>
                             <li>Internal and external discord that disrupts the "circle-loop" of vision to execution.</li>
-                            <li>A failure of leadership dynamics, where the "C-Suite" and the "Front Line" no longer speak the same language or share the same priorities.</li>
-                            <li>The realization that the current organizational alignment is creating hidden costs</li>
+                            <li>A failure of leadership dynamics, where the "C-Suite" and the "Front Line" no longer speak the same language.</li>
+                            <li>The realization that the current organizational alignment is creating hidden costs.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Demerger -->
                 <div class="service-card">
                     <h3>The Demerger Concept</h3>
-                    <p>While mergers and alliances are typically pursued to create synergy- where the output is greater than its parts, demerger is the strategic solution when a vision mismatch is identified. The goal of a demerger is to extract more value from the entities separately than they could provide as a single, misaligned unit. This is often necessary to:</p>
-
+                    <p>The goal of a demerger is to extract more value from the entities separately than they could provide as a single, misaligned unit.</p>
                     <div class="service-list">
                         <div class="service-list-item">
                             <strong>Protect the legacy:</strong>
@@ -455,41 +425,34 @@
                         </div>
                         <div class="service-list-item">
                             <strong>Address root causes:</strong>
-                            <p>Rather than just treating the symptoms of organizational friction, a demerger allows for strategic problem framing to reset the trajectory of each individual part.</p>
+                            <p>A demerger allows for strategic problem framing to reset the trajectory of each individual part.</p>
                         </div>
                         <div class="service-list-item">
                             <strong>Restore Agility:</strong>
-                            <p>Breaking down a rigid, unsustainable structure allows the resulting smaller entities to adopt adaptive thinking and thrive in more dynamic environments.</p>
+                            <p>Breaking down a rigid structure allows smaller entities to adopt adaptive thinking and thrive.</p>
                         </div>
                     </div>
-
                     <div class="service-note">
-                        <p>It is not always negative- sometimes in internal divisions. Rolls-Royce aviation and automotors. Tesla and SpaceX. Mitsubishi commercial-banks</p>
+                        <p>It is not always negative—sometimes in internal divisions. Rolls-Royce aviation and automotors. Tesla and SpaceX. Mitsubishi commercial-banks.</p>
                     </div>
-
-                    <p class="service-summary">The goal of a demerger is to extract more value from the entities/divisions separately than they could provide as a single, misaligned unit.</p>
                 </div>
 
-                <!-- Synergistic Alliances: Merger -->
                 <div class="service-card">
                     <h3>Synergistic Strategic Alliances: Merger</h3>
-                    <p>Improve long-term ROI by ensuring that the output of the partnership is greater than the sum of its individual parts. This approach moves beyond short-term gains, focusing on commercially long-term strategic goals that build durable value over time.</p>
-                    <p>Ultimately, these alliances allow for vision evaluation to ensure that the path being followed is truly sustainable, avoiding the financial pitfalls of a vision mismatch and focusing instead on the incremental benefits and "upsides" of shared progress.</p>
+                    <p>Improve long-term ROI by ensuring that the output of the partnership is greater than the sum of its individual parts. These alliances allow for vision evaluation to ensure that the path being followed is truly sustainable.</p>
                 </div>
 
-                <!-- Short-term Let-offs -->
                 <div class="service-card service-featured">
                     <h3>Short-term Let-offs</h3>
-                    <p>Refer to strategic sacrifices made in the present to secure the durability, security, and perpetual existence of an organisation.</p>
-
+                    <p>Strategic sacrifices made in the present to secure the durability, security, and perpetual existence of an organisation.</p>
                     <div class="letoffs-grid">
                         <div class="letoff-item">
                             <strong>Concurrent Internal Upskilling:</strong>
-                            <p>Instead of focusing solely on immediate productivity, an organisation invests in "Adaptive Adoption," which involves upskilling teams to thrive in highly dynamic environments. This is a short-term resource "let-off" that ensures long-term organizational agility.</p>
+                            <p>Investing in "Adaptive Adoption"—upskilling teams to thrive in highly dynamic environments. A short-term resource "let-off" that ensures long-term organizational agility.</p>
                         </div>
                         <div class="letoff-item">
                             <strong>Addressing Root Causes via Strategic Problem Framing:</strong>
-                            <p>Choosing to move "beyond symptoms" to address the fundamental root causes of organisational challenges. While this may take more time than a "quick fix," it leads to non-obvious solutions and long-term stability.</p>
+                            <p>Moving "beyond symptoms" to address fundamental root causes. More time than a quick fix, but leads to non-obvious solutions and long-term stability.</p>
                         </div>
                         <div class="letoff-item">
                             <strong>Strategic Demergers:</strong>
@@ -497,7 +460,7 @@
                         </div>
                         <div class="letoff-item">
                             <strong>Investing in De-risking Architectures:</strong>
-                            <p>Allocating capital toward Sustainability Practice and circular frameworks. While these may not offer immediate traditional ROI, they serve as an "architecture of de-risking" that protects the organisation's legacy and ensures its perpetual existence.</p>
+                            <p>Allocating capital toward Sustainability Practice and circular frameworks—an "architecture of de-risking" that protects the organisation's legacy.</p>
                         </div>
                         <div class="letoff-item">
                             <strong>Prioritising Synergistic Alliances:</strong>
@@ -512,18 +475,17 @@
     <!-- ==============================
          HIDDEN COST FRAMEWORK
     ============================== -->
-    <section class="section section-alt" id="hidden-costs">
+    <section class="section section-gray" id="hidden-costs">
         <div class="container">
             <div class="section-header">
                 <div class="section-tag">Uncovering Value</div>
                 <h2 class="section-title">Hidden Cost Identification</h2>
                 <p class="section-desc">The process uncovers costs through the following methods:</p>
             </div>
-
             <div class="hidden-costs-grid">
                 <div class="cost-card">
                     <h4>Evaluating Structural Rigidity</h4>
-                    <p>Identifies costs associated with rigid structures that are unable to sustain themselves or adapt to a changing environment. By mapping positional strategies, the framework highlights where an organization's current form is draining resources rather than supporting its vision.</p>
+                    <p>Identifies costs associated with rigid structures that are unable to sustain themselves or adapt to a changing environment.</p>
                 </div>
                 <div class="cost-card">
                     <h4>Identifying Vision Mismatch</h4>
@@ -531,145 +493,49 @@
                 </div>
                 <div class="cost-card">
                     <h4>Analyzing Synergy and Output</h4>
-                    <p>The framework looks for opportunities where synergy or strategic alliances can make the "output greater than its parts". Hidden costs are often found in areas where an organization is operating in isolation or failing to leverage its "conclaves and strengths" to their full potential, resulting in lost efficiency.</p>
+                    <p>Hidden costs are often found where an organization is operating in isolation or failing to leverage its strengths to their full potential.</p>
                 </div>
                 <div class="cost-card">
                     <h4>Focusing on Attainability</h4>
-                    <p>By ensuring a vision is attainable and sustainable, helping organizations avoid the long-term financial "downsides" of pursuing unfeasible goals, instead advocating for incremental benefits and sustainable growth practices.</p>
+                    <p>Ensuring a vision is attainable and sustainable, helping organizations avoid the long-term financial "downsides" of pursuing unfeasible goals.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ==============================
-         ADVOCACY
+         TEAM
     ============================== -->
-    <section class="section section-dark" id="advocacy">
+    <section class="section section-dark" id="team">
         <div class="container">
-            <div class="section-header light">
-                <div class="section-tag">How to Advocate for Things</div>
-                <h2 class="section-title">Strategic Advocacy</h2>
+            <div class="section-header light" style="margin-bottom: 4rem;">
+                <div class="section-tag">Our Leadership</div>
+                <h2 class="section-title">Meet the Team</h2>
             </div>
-
-            <div class="advocacy-grid">
-                <div class="advocacy-item">
-                    <div class="advocacy-icon">01</div>
-                    <p>You show the incremental benefits - highlighting the upside &amp; minimising the downside (thought process internal)</p>
-                </div>
-                <div class="advocacy-item">
-                    <div class="advocacy-icon">02</div>
-                    <p>Advocate for sustainable alliances</p>
-                </div>
-                <div class="advocacy-item">
-                    <div class="advocacy-icon">03</div>
-                    <p>Short term let offs for long term benefits: Example- Subsistence Farming practises for sustainable growth</p>
-                </div>
-                <div class="advocacy-item">
-                    <div class="advocacy-icon">04</div>
-                    <p>Identification of hidden cost and duplication of people and process leading to inflated cost.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==============================
-         VISION EVALUATION DEEP DIVE
-    ============================== -->
-    <section class="section" id="vision">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">Vision Alignment</div>
-                <h2 class="section-title">Vision Evaluation</h2>
-            </div>
-
-            <div class="vision-content">
-                <div class="vision-card">
-                    <p>Vision alignment- durability and sustainability of vision- is it truly a long term</p>
-                    <p>Vision evaluation (going back to the genesis/basics/starting point and then evaluating whether the genesis/the starting point is still relevant in current the context and whether a reengineering the starting point is what is required or whether the organisation completely needs to pivot in order for organisation to survive and thrive.)</p>
-                    <div class="card-highlight">
-                        <strong>Vision should be attainable, vision should be sustainable</strong> - rigid structure won't sustain in the changing environment
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="tc.jpg" alt="TC de Sousa portrait">
                     </div>
+                    <h3 class="team-name">TC de Sousa</h3>
+                    <p class="team-role">Team Principal</p>
+                    <p class="team-education">Bachelors &amp; PG<br>Denison Univ Granville<br>OH-USA</p>
                 </div>
-
-                <div class="vision-card">
-                    <h4>Synergistic Strategic Alliances</h4>
-                    <p>(partnering with..) sustainable alliances - First should be global- jaguar-tata starbucks-tata, maruti suzuki (in south asia) Word used mostly in M&amp;A</p>
-                    <p><strong>Synergistic:</strong> The output is greater than its part - alliance- synergy - merge</p>
-                    <p><strong>Demerge:</strong> getting more value separately (vision mismatch)</p>
-                    <p><strong>Internal cohesion</strong></p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==============================
-         CTA
-    ============================== -->
-    <section class="section section-cta">
-        <div class="container">
-            <div class="cta-content">
-                <div class="section-tag">Partner With Us</div>
-                <h2 class="section-title">Ready to Make the Transition?</h2>
-                <p class="cta-desc">Transform your organization from finite tactical execution to perpetual strategic thinking. Move from Strategic Intent to Practical Alignment.</p>
-                <a href="#contact" class="btn btn-primary btn-large">Start the Conversation</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==============================
-         CONTACT
-    ============================== -->
-    <section class="section section-contact" id="contact">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <div class="section-tag">Get In Touch</div>
-                    <h2 class="section-title">Ready to Transition to Infinite Games?</h2>
-                    <p class="contact-desc">Transform your organization's approach from finite tactical execution to perpetual strategic thinking.</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <span class="contact-label">Email</span>
-                            <a href="mailto:netto@fwc360.com">netto@fwc360.com</a>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-label">Phone</span>
-                            <span>+31 687 392 568</span>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-label">Hours</span>
-                            <span>Mon - Fri: 09:00 - 18:00 CET</span>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-label">Locations</span>
-                            <span>Eindhoven (NL) | Mumbai (IN)</span>
-                        </div>
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="Ryan Michigan.jpg" alt="Dr Ryan Michigan portrait">
                     </div>
+                    <h3 class="team-name">Dr Ryan Michigan</h3>
+                    <p class="team-role">Risk Analysis</p>
+                    <p class="team-education">PhD-Columbia Univ-USA,<br>MBA-IIM-Ahmedabad-IN</p>
                 </div>
-
-                <div class="contact-form-wrap">
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-row">
-                            <div class="form-group"><input type="text" name="name" placeholder="Full Name" required></div>
-                            <div class="form-group"><input type="email" name="email" placeholder="Email Address" required></div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group"><input type="text" name="company" placeholder="Organization"></div>
-                            <div class="form-group"><input type="text" name="role" placeholder="Your Role"></div>
-                        </div>
-                        <div class="form-group">
-                            <select name="challenge">
-                                <option value="">What challenge are you facing?</option>
-                                <option value="vision-mismatch">Vision-Capability Mismatch</option>
-                                <option value="strategic-alignment">Strategic Alignment</option>
-                                <option value="sustainability">Sustainability Strategy</option>
-                                <option value="alliances">Strategic Alliances</option>
-                                <option value="restructuring">Organizational Restructuring</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group"><textarea name="message" rows="4" placeholder="Tell us about your strategic objectives..."></textarea></div>
-                        <button type="submit" class="btn btn-primary btn-full">Initiate Partnership</button>
-                    </form>
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="Ryan Netto.jpg" alt="Ryan Netto portrait">
+                    </div>
+                    <h3 class="team-name">Ryan Netto</h3>
+                    <p class="team-role">Operations</p>
+                    <p class="team-education">MSc Sustainable<br>Entrepreneurship<br>RijksUniv Groningen-NL</p>
                 </div>
             </div>
         </div>
@@ -680,17 +546,39 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <span class="logo-text">Mercury</span>
-                    <span class="logo-badge">SPC</span>
-                    <p>Strategy & Planning Council</p>
-                    <span class="footer-tagline">An FWC Initiative</span>
+                    <div class="footer-wordmark">Mercury<span>SPC</span></div>
+                    <p>Strategy &amp; Planning Council</p>
+                    <div class="footer-initiative">
+                        <img src="FWC_LOGO2020.png" alt="FWC Initiative Logo" class="fwc-logo">
+                        <div class="footer-initiative-copy">
+                            <span class="footer-tagline">An FWC Initiative</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-contact">
+                    <div class="footer-contact-item">
+                        <span class="contact-label">Email</span>
+                        <a href="mailto:netto@fwc360.com">netto@fwc360.com</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <span class="contact-label">Phone</span>
+                        <span>+31 687 392 568</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <span class="contact-label">Hours</span>
+                        <span>Mon - Fri: 09:00 - 18:00 CET</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <span class="contact-label">Locations</span>
+                        <span>Eindhoven (NL) | Mumbai (IN)</span>
+                    </div>
                 </div>
                 <div class="footer-links">
-                    <a href="#philosophy">Philosophy</a>
+                    <a href="#foundations">Foundations</a>
                     <a href="#what-we-do">What We Do</a>
                     <a href="#execution">Execution</a>
                     <a href="#services">Services</a>
-                    <a href="#contact">Contact</a>
+                    <a href="#team">Team</a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -699,6 +587,6 @@
         </div>
     </footer>
 
-    <script src="script.js?v=20260320v5"></script>
+    <script src="script-v2.js"></script>
 </body>
 </html>
