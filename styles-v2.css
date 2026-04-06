@@ -193,7 +193,6 @@ h1, h2, h3, h4, h5, h6 {
 .nav-logo {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
 }
 
 .logo-text {
@@ -204,14 +203,12 @@ h1, h2, h3, h4, h5, h6 {
     transition: color 0.4s ease;
 }
 
+.logo-spc {
+    color: var(--teal-light);
+}
+
 .logo-badge {
-    background: var(--teal);
-    color: white;
-    font-size: 0.7rem;
-    font-weight: 600;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    letter-spacing: 0.05em;
+    display: none;
 }
 
 .nav-links {
@@ -337,7 +334,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero-title {
     font-size: clamp(3rem, 6vw, 5rem);
     line-height: 1.05;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
     color: #E8ECF0;
 }
 
