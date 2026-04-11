@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thought Leadership In Action | Mercury SPC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles-v2.css">
+    <style>
+        body { background: var(--dark); margin: 0; }
+
+        /* ── Back ── */
+        .p01-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.45);
+            font-size: 0.85rem;
+            font-family: var(--font-display);
+            letter-spacing: 0.04em;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .p01-back:hover { color: var(--teal-light); }
+        .p01-back svg { width: 16px; height: 16px; }
+
+        /* ── Hero ── */
+        .p01-hero {
+            background: var(--dark);
+            padding: 9rem 0 4rem;
+            position: relative;
+        }
+        .p01-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(54,117,137,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .p01-hero-badge {
+            display: inline-block;
+            background: rgba(54,117,137,0.15);
+            border: 1px solid rgba(54,117,137,0.3);
+            color: var(--teal-light);
+            font-family: var(--font-display);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.9rem;
+            border-radius: 100px;
+            margin-top: 2rem;
+            margin-bottom: 1.25rem;
+        }
+        .p01-hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+        .p01-hero h1 span { color: var(--teal-light); }
+        .p01-hero p {
+            color: rgba(255,255,255,0.5);
+            font-size: 1rem;
+            line-height: 1.7;
+            max-width: 600px;
+        }
+
+        /* ── Image Banner ── */
+        .p01-banner {
+            padding: 0 0 4rem;
+            background: var(--dark);
+        }
+        .p01-banner-img {
+            width: 100%;
+            aspect-ratio: 21/9;
+            background: rgba(255,255,255,0.03);
+            border: 1px dashed rgba(255,255,255,0.08);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .p01-banner-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .p01-banner-img .placeholder {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.18);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* ── Timeline ── */
+        .p01-timeline-section {
+            background: var(--dark);
+            padding: 0 0 5rem;
+        }
+        .p01-timeline {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .p01-timeline::before {
+            content: '';
+            position: absolute;
+            left: 140px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: rgba(54,117,137,0.25);
+        }
+
+        /* Timeline Year Group */
+        .p01-year-group {
+            position: relative;
+        }
+        .p01-year-label {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: rgba(255,255,255,0.06);
+            line-height: 1;
+            padding: 2.5rem 0 1rem;
+            position: relative;
+        }
+
+        /* Timeline Event */
+        .p01-event {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 2.5rem;
+            padding: 1.25rem 0;
+        }
+        .p01-event-meta {
+            text-align: right;
+            padding-right: 2rem;
+            position: relative;
+        }
+        .p01-event-meta::after {
+            content: '';
+            position: absolute;
+            right: -5px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--teal);
+            border: 2px solid var(--dark);
+        }
+        .p01-event-venue {
+            font-family: var(--font-display);
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--teal-light);
+            margin-bottom: 0.2rem;
+        }
+        .p01-event-role {
+            font-family: var(--font-display);
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.32);
+        }
+
+        .p01-event-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem 2rem;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .p01-event-card:hover {
+            background: rgba(54,117,137,0.05);
+            border-color: rgba(54,117,137,0.2);
+        }
+        .p01-event-title {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.65rem;
+            line-height: 1.4;
+        }
+        .p01-event-desc {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.75;
+            margin-bottom: 0;
+        }
+        .p01-event-speakers {
+            margin-top: 0.85rem;
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.38);
+            line-height: 1.6;
+        }
+        .p01-event-speakers strong {
+            color: rgba(255,255,255,0.52);
+            font-weight: 500;
+        }
+
+        /* Event images slot */
+        .p01-event-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        .p01-event-img {
+            aspect-ratio: 16/10;
+            background: rgba(255,255,255,0.03);
+            border: 1px dashed rgba(255,255,255,0.08);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .p01-event-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.4s;
+        }
+        .p01-event-img:hover img { filter: grayscale(0%); }
+        .p01-event-img .placeholder {
+            font-family: var(--font-display);
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.15);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* ── Footer CTA ── */
+        .p01-footer {
+            background: var(--dark);
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        .p01-footer h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+        }
+        .p01-footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .p01-footer-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.7rem 1.6rem;
+            font-family: var(--font-display);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            transition: all 0.2s;
+        }
+        .p01-footer-links .btn-primary {
+            background: var(--teal);
+            color: #ffffff;
+        }
+        .p01-footer-links .btn-primary:hover {
+            background: #2a607a;
+        }
+        .p01-footer-links .btn-ghost {
+            background: transparent;
+            border: 1.5px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.55);
+        }
+        .p01-footer-links .btn-ghost:hover {
+            border-color: var(--teal);
+            color: var(--teal-light);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .p01-timeline::before { left: 20px; }
+            .p01-event { grid-template-columns: 1fr; gap: 0.75rem; }
+            .p01-event-meta { text-align: left; padding-right: 0; padding-left: 2.5rem; }
+            .p01-event-meta::after { left: -5px; right: auto; }
+            .p01-event-card { margin-left: 2.5rem; }
+            .p01-event-images { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-text">Mercury<span class="logo-spc">SPC</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html#philosophy">Cornerstone</a>
+                <a href="index.html#what-we-do">What We Do</a>
+                <a href="index.html#traditional-stewardship">Traditional stewardship</a>
+                <a href="index.html#team">Team</a>
+                <a href="index.html#contact" class="nav-cta">Partner With Us</a>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ==============================
+         HERO
+    ============================== -->
+    <header class="p01-hero">
+        <div class="container">
+            <a href="green-rinsing-execution.html" class="p01-back">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3L5 8l5 5"/></svg>
+                Go Back
+            </a>
+            <div class="p01-hero-badge">Project 01</div>
+            <h1>Thought Leadership <span>In Action</span></h1>
+            <p>Sustainability Forums &amp; Conclaves — Mercury SPC's sustained presence as keynote speakers, panel curators, and moderators at India's foremost sustainability-design forums since 2015.</p>
+        </div>
+    </header>
+
+    <!-- ==============================
+         HERO IMAGE BANNER
+    ============================== -->
+    <section class="p01-banner">
+        <div class="container">
+            <div class="p01-banner-img">
+                <img src="Picture 3.jpg" alt="Thought Leadership — Conclave & Forum stage">
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================
+         TIMELINE
+    ============================== -->
+    <section class="p01-timeline-section">
+        <div class="container">
+            <div class="p01-timeline">
+
+                <!-- ── 2020 ── -->
+                <div class="p01-year-group">
+                    <div class="p01-year-label">2020</div>
+
+                    <div class="p01-event">
+                        <div class="p01-event-meta">
+                            <div class="p01-event-venue">Design Week</div>
+                            <div class="p01-event-role">Keynote Speaker</div>
+                        </div>
+                        <div class="p01-event-card">
+                            <div class="p01-event-title">Steps to Sustainable Development in a Modern World</div>
+                            <p class="p01-event-desc">The imperative need to promote sustainability as a fiscally profitable business practice — presenting the framework that underpins the Mercury SPC Fiscally Positive Sustainability Doctrine.</p>
+                            <div class="p01-event-images">
+                                <div class="p01-event-img"><img src="Picture 28.jpg" alt="Steps to Sustainable Development keynote"></div>
+                                <div class="p01-event-img"><img src="Picture 29.jpg" alt="Sustainable Micro Culture presentation"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p01-event">
+                        <div class="p01-event-meta">
+                            <div class="p01-event-venue">Design Week</div>
+                            <div class="p01-event-role">Speaker &amp; Moderator</div>
+                        </div>
+                        <div class="p01-event-card">
+                            <div class="p01-event-title">Architecture 2010–2030: Natural Light &amp; Airflow in Sustainable Design</div>
+                            <p class="p01-event-desc">Exploring the use of natural light and airflow in sustainably designed buildings with leading international sustainable architects.</p>
+                            <div class="p01-event-speakers">
+                                <strong>Marc Thorpe</strong> — North American Sustainable Architect of the Year 2019–2020<br>
+                                <strong>Nuru Karim</strong> — The Straw Bale School, Malawi; Modern Mosque of Light, UAE
+                            </div>
+                            <div class="p01-event-images">
+                                <div class="p01-event-img"><img src="Picture 26.jpg" alt="Marc Thorpe, Nuru Karim — Architecture 2010-2030"></div>
+                                <div class="p01-event-img"><img src="Picture 27.jpg" alt="Architecture 2010-2030 panel discussion"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p01-event">
+                        <div class="p01-event-meta">
+                            <div class="p01-event-venue">Bikaner House</div>
+                            <div class="p01-event-role">Keynote / Panellist</div>
+                        </div>
+                        <div class="p01-event-card">
+                            <div class="p01-event-title">Future Collective — Food, Clothing &amp; Shelter: Building a Conscious Future</div>
+                            <p class="p01-event-desc">A landmark three-track conscious futures panel — Food: Building a Conscious Future (Amitabh Kant, Niti Aayog), Clothing: Decoding Sustainable Fashion (Nonita Kalra, Harper's Bazaar), Shelter: Conscious Building &amp; Living for the Future (TC de Sousa, FWC LLP).</p>
+                            <div class="p01-event-speakers">
+                                Conscious Building panel with <strong>Martand Khosla</strong> (Moderator), <strong>Mahendra Singhi</strong> (MD/CEO Dalmia Cements), <strong>Gawda Saxena</strong> (BD GRIHA), <strong>Gauri Mathur</strong> (Sustainable Building Alternatives, GRIHA)
+                            </div>
+                            <div class="p01-event-images">
+                                <div class="p01-event-img"><img src="Picture 21.jpg" alt="Future Collective panel at Bikaner House"></div>
+                                <div class="p01-event-img"><img src="Picture 30.jpg" alt="Sustainable Systems presentation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── 2019 ── -->
+                <div class="p01-year-group">
+                    <div class="p01-year-label">2019</div>
+
+                    <div class="p01-event">
+                        <div class="p01-event-meta">
+                            <div class="p01-event-venue">Design Week</div>
+                            <div class="p01-event-role">Keynote &amp; Panellist</div>
+                        </div>
+                        <div class="p01-event-card">
+                            <div class="p01-event-title">The Past, Present &amp; Future of Sustainable Thinking &amp; Design</div>
+                            <p class="p01-event-desc">A forward-looking examination of sustainability's trajectory across design disciplines — from legacy practices to emerging frameworks.</p>
+                            <div class="p01-event-speakers">
+                                <strong>Theresa Millard</strong> — Kohler Inc. Eco Lab<br>
+                                <strong>Dan Gurney</strong> — Sustainable Architecture, Vancouver<br>
+                                <strong>Amit Khanna</strong> — City Planner
+                            </div>
+                            <div class="p01-event-images">
+                                <div class="p01-event-img"><img src="Picture 6.jpg" alt="Past Present Future panel"></div>
+                                <div class="p01-event-img"><img src="Picture 8.jpg" alt="Sustainability design discussion"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p01-event">
+                        <div class="p01-event-meta">
+                            <div class="p01-event-venue">Design Week</div>
+                            <div class="p01-event-role">Curator &amp; Moderator</div>
+                        </div>
+                        <div class="p01-event-card">
+                            <div class="p01-event-title">Design is not just the Destination — Sustainability is the Journey</div>
+                            <p class="p01-event-desc">A curated forum exploring the relationship between design practice and sustainability as a continuous, embedded process rather than a destination.</p>
+                            <div class="p01-event-speakers">
+                                <strong>Bikram Mittra</strong> — Kohler, Asia<br>
+                                <strong>Saket Sethi</strong> — International Architectural Practice<br>
+                                <strong>Seetu Kohli</strong> — Curator
+                            </div>
+                            <div class="p01-event-images">
+                                <div class="p01-event-img"><img src="Picture 5.jpg" alt="Sustainability is the Journey forum"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── 2018 ── -->
+                <div class="p01-year-group">
+                    <div class="p01-year-label">2018</div>
+
+                    <div class="p01-event">
+                        <div class="p01-event-meta">
+                            <div class="p01-event-venue">Design Week</div>
+                            <div class="p01-event-role">Design Partner Dialogues</div>
+                        </div>
+                        <div class="p01-event-card">
+                            <div class="p01-event-title">Humour &amp; Design Thinking — A Product Design Perspective</div>
+                            <p class="p01-event-desc">Exploring the role of playfulness and wit in sustainable product design — featuring the Focal 100SI Recycled Metal Series.</p>
+                            <div class="p01-event-speakers">
+                                <strong>Takaharu Tezuka</strong> — Tezuka Architects
+                            </div>
+                            <div class="p01-event-images">
+                                <div class="p01-event-img"><img src="Picture 17.jpg" alt="With Takaharu Tezuka"></div>
+                                <div class="p01-event-img"><img src="Picture 19.jpg" alt="Focal 100SI Metal Series presentation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── 2017 ── -->
+                <div class="p01-year-group">
+                    <div class="p01-year-label">2017</div>
+
+                    <div class="p01-event">
+                        <div class="p01-event-meta">
+                            <div class="p01-event-venue">Design Week</div>
+                            <div class="p01-event-role">Panel Curator &amp; Speaker</div>
+                        </div>
+                        <div class="p01-event-card">
+                            <div class="p01-event-title">Future Product Design: Recycled vs Recyclable</div>
+                            <p class="p01-event-desc">A two-part forum on the product design future and India-specific sustainable infrastructure — examining what "Sustainable Infrastructure: The India Story" really requires.</p>
+                            <div class="p01-event-speakers">
+                                <strong>Raffaella Mangiarotti</strong> &bull; <strong>Paul Mathieu</strong> &bull; <strong>Ashiesh Shah</strong><br>
+                                <strong>Dikshu Kukreja</strong> — Harvard / School of Planning &amp; Architecture<br>
+                                <strong>Sanjay Puri</strong> — Sanjay Puri Architects<br>
+                                <strong>Kaif Faquih</strong> — Urban Planning Architect
+                            </div>
+                            <div class="p01-event-images">
+                                <div class="p01-event-img"><img src="Picture 13.jpg" alt="Recycled vs Recyclable panel"></div>
+                                <div class="p01-event-img"><img src="Picture 14.jpg" alt="Future Product Design forum"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p01-event">
+                        <div class="p01-event-meta">
+                            <div class="p01-event-venue">Sotheby's Int'l</div>
+                            <div class="p01-event-role">Keynote &amp; Panel Curator</div>
+                        </div>
+                        <div class="p01-event-card">
+                            <div class="p01-event-title">Sustainable Design Thinking in Luxury Planning and Design</div>
+                            <p class="p01-event-desc">Examining how luxury planning and design intersect with sustainable practice — exploring the premium end of the sustainability adoption curve.</p>
+                            <div class="p01-event-speakers">
+                                <strong>Raseel Gujral</strong> &bull; <strong>Amit Gupta</strong> &bull; <strong>Gaurav Bhatia</strong> &bull; <strong>Paresh Maity</strong>
+                            </div>
+                            <div class="p01-event-images">
+                                <div class="p01-event-img"><img src="Picture 10.jpg" alt="Sotheby's CII Global Luxury Realty Conclave"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── 2016 ── -->
+                <div class="p01-year-group">
+                    <div class="p01-year-label">2016</div>
+
+                    <div class="p01-event">
+                        <div class="p01-event-meta">
+                            <div class="p01-event-venue">Design Week</div>
+                            <div class="p01-event-role">Speaker &amp; Curator</div>
+                        </div>
+                        <div class="p01-event-card">
+                            <div class="p01-event-title">Finding the Balance — Aesthetic and Engineering</div>
+                            <p class="p01-event-desc">From new age development projects to luxury retreats — the balance between aesthetic ambition and engineering constraint as a sustainability lever.</p>
+                            <div class="p01-event-images">
+                                <div class="p01-event-img"><img src="Picture 4.jpg" alt="Finding the Balance — The New Retreat panel"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── 2015 ── -->
+                <div class="p01-year-group">
+                    <div class="p01-year-label">2015</div>
+
+                    <div class="p01-event">
+                        <div class="p01-event-meta">
+                            <div class="p01-event-venue">Design Week</div>
+                            <div class="p01-event-role">Speaker &amp; Panellist</div>
+                        </div>
+                        <div class="p01-event-card">
+                            <div class="p01-event-title">Global Sustainable Architecture &amp; Urban Planning</div>
+                            <p class="p01-event-desc">Curating panel discussions on landmark global projects: 4 World Trade Centre (NYC), MIT Media Lab (Cambridge, MA), the UN Building (NYC), the creation of Amravati (Andhra Pradesh), and the sustainable planning &amp; design of the Aga Khan Museum (Toronto).</p>
+                            <div class="p01-event-images">
+                                <div class="p01-event-img"><img src="Picture 1.jpg" alt="Global Sustainable Architecture keynote"></div>
+                                <div class="p01-event-img"><img src="Picture 23.jpg" alt="Sustainable urban planning presentation"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p01-event">
+                        <div class="p01-event-meta">
+                            <div class="p01-event-venue">Fumihiko Maki</div>
+                            <div class="p01-event-role">Conclave &amp; Round Table</div>
+                        </div>
+                        <div class="p01-event-card">
+                            <div class="p01-event-title">In Dialogue with Fumihiko Maki (1928–2024)</div>
+                            <p class="p01-event-desc">A private conclave and round table session with the Pritzker Prize Laureate (1993) — reflecting on a lifetime of sustainable design thinking at the highest level of global architecture.</p>
+                            <div class="p01-event-images">
+                                <div class="p01-event-img"><img src="Picture 2.jpg" alt="With Fumihiko Maki"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================
+         FOOTER
+    ============================== -->
+    <footer class="p01-footer">
+        <div class="container">
+            <h3>Continue exploring</h3>
+            <div class="p01-footer-links">
+                <a href="project-02.html" class="btn-primary">Project 02 — The Doctrine &rarr;</a>
+                <a href="green-rinsing-execution.html" class="btn-ghost">&larr; All Projects</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script-v2.js"></script>
+</body>
+</html>

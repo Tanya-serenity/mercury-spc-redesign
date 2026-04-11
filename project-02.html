@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Doctrine — FPSD | Mercury SPC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles-v2.css">
+    <style>
+        body { margin: 0; }
+
+        /* ── Back ── */
+        .p02-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.45);
+            font-size: 0.85rem;
+            font-family: var(--font-display);
+            letter-spacing: 0.04em;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .p02-back:hover { color: var(--teal-light); }
+        .p02-back svg { width: 16px; height: 16px; }
+
+        /* ── Hero ── */
+        .p02-hero {
+            background: var(--dark);
+            padding: 9rem 0 4rem;
+            position: relative;
+        }
+        .p02-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(54,117,137,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .p02-hero-badge {
+            display: inline-block;
+            background: rgba(54,117,137,0.15);
+            border: 1px solid rgba(54,117,137,0.3);
+            color: var(--teal-light);
+            font-family: var(--font-display);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.9rem;
+            border-radius: 100px;
+            margin-top: 2rem;
+            margin-bottom: 1.25rem;
+        }
+        .p02-hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.15;
+            margin-bottom: 0.5rem;
+        }
+        .p02-hero h1 span { color: var(--teal-light); }
+        .p02-hero .p02-hero-tagline {
+            font-family: var(--font-display);
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-weight: 400;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 1rem;
+        }
+        .p02-hero p {
+            color: rgba(255,255,255,0.45);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            max-width: 600px;
+        }
+
+        /* ── Doctrine graphics ── */
+        .p02-graphic-band {
+            padding: 0 0 4rem;
+            background: var(--dark);
+        }
+        .p02-graphic-band--light {
+            padding: 4rem 0 0;
+            background: #ffffff;
+        }
+        .p02-graphic-band--dark {
+            padding: 4rem 0 0;
+            background: linear-gradient(180deg, var(--gray-bg) 0%, #ffffff 100%);
+        }
+        .p02-graphic-shell {
+            background: #ffffff;
+            border-radius: 40px;
+            padding: 4rem 2rem;
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .p02-graphic-title {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 3.5rem;
+            text-align: center;
+        }
+        .p02-graphic-title h3 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: #1a2026;
+            margin-bottom: 1rem;
+        }
+        .p02-graphic-title p {
+            font-size: 1rem;
+            color: #666;
+            max-width: 720px;
+            margin: 0 auto;
+            line-height: 1.75;
+        }
+        .p02-title-bar {
+            width: min(100%, 620px);
+            height: 14px;
+            border-radius: 999px;
+            margin: 1.2rem auto 0;
+            background: linear-gradient(90deg, #8ee6db 0%, #3ca1e6 58%, #2260ac 100%);
+        }
+        .p02-impact-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 1.25rem;
+            margin-top: 2rem;
+        }
+        .p02-impact-card {
+            background: #f8f9fa;
+            border-radius: 18px;
+            padding: 1.5rem 1rem;
+            min-height: 140px;
+            border-bottom: 4px solid var(--teal);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+        .p02-impact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            background: #ffffff;
+        }
+        .p02-impact-card h4 {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--teal);
+            text-transform: none;
+            line-height: 1.25;
+            margin-bottom: 0.5rem;
+        }
+        .p02-impact-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .p02-impact-card li {
+            font-size: 0.82rem;
+            line-height: 1.5;
+            color: #555;
+            margin: 0;
+        }
+        .p02-impact-foundation {
+            position: relative;
+            z-index: 1;
+            margin-top: 3rem;
+            padding: 2.25rem;
+            border-radius: 20px;
+            background: #f8f9fa;
+            border: 1px solid rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .p02-impact-foundation h4 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--teal);
+            margin-bottom: 1.25rem;
+            text-transform: none;
+        }
+        .p02-impact-foundation ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .p02-impact-foundation li {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
+        }
+        .p02-impact-foundation li::before {
+            content: '•';
+            color: var(--teal);
+            margin-right: 0.6rem;
+        }
+        .p02-outcomes-shell {
+            background: #ffffff;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.05);
+            max-width: 1300px;
+        }
+        .p02-outcomes-shell .p02-graphic-title h3 {
+            color: #1a2026;
+        }
+        .p02-outcomes-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-areas:
+                'n8 n1 n2'
+                'n7 core n3'
+                'n6 n5 n4';
+            gap: 1.5rem;
+            align-items: center;
+        }
+        .p02-outcome-node {
+            min-height: 140px;
+            border-radius: 50%;
+            padding: 1.25rem;
+            background: #f8f9fa;
+            border: 1px solid rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+        }
+        .p02-outcome-node:hover {
+            background: #ffffff;
+            transform: scale(1.05);
+            border-color: var(--teal);
+        }
+        .p02-outcome-badge {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #ffffff;
+            background: var(--teal);
+            margin-bottom: 0.5rem;
+        }
+        .p02-outcome-node h4 {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #333;
+            line-height: 1.2;
+        }
+        .p02-outcome-core {
+            grid-area: core;
+            min-height: 280px;
+            border-radius: 50%;
+            background: radial-gradient(circle at top, var(--teal) 0%, #206070 100%);
+            border: 10px solid #ffffff;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        .p02-outcome-core h4 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.2;
+            margin: 0;
+        }
+        .p02-outcome-core p { display: none; }
+        .p02-circular-shell {
+            background: #ffffff;
+            padding: 4rem 2rem;
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+        }
+        .p02-circular-shell .p02-graphic-title h3 {
+            color: #1a2026;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+        }
+        .p02-circular-layout {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+        .p02-circular-notes {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .p02-circular-note {
+            padding: 1.25rem;
+            border-radius: 12px;
+            background: #f8f9fa;
+            border-left: 4px solid var(--teal);
+            transition: transform 0.3s ease;
+            text-align: left;
+        }
+        .p02-circular-notes:last-of-type .p02-circular-note {
+            border-left: none;
+            border-right: 4px solid var(--teal);
+            text-align: right;
+        }
+        .p02-circular-note h4 {
+            color: var(--teal);
+            font-size: 1rem;
+            margin-bottom: 0.45rem;
+            font-weight: 700;
+        }
+        .p02-circular-note p {
+            color: #444;
+            font-size: 0.88rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+        .p02-circular-wheel-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+        }
+        .p02-circular-wheel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .p02-circular-facet,
+        .p02-circular-core {
+            border-radius: 50%;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+        }
+        .p02-circular-facet {
+            width: 28%;
+            height: 28%;
+            background: #ffffff;
+            color: #555;
+            font-family: var(--font-display);
+            font-size: 0.72rem;
+            font-weight: 600;
+            line-height: 1.2;
+            border: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 0.5rem;
+            z-index: 2;
+        }
+        /* Hexagonal distribution */
+        .p02-circular-facet:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); }
+        .p02-circular-facet:nth-child(2) { top: 25%; right: 0; }
+        .p02-circular-facet:nth-child(3) { bottom: 25%; right: 0; }
+        .p02-circular-facet:nth-child(4) { bottom: 0; left: 50%; transform: translateX(-50%); }
+        .p02-circular-facet:nth-child(5) { bottom: 25%; left: 0; }
+        .p02-circular-facet:nth-child(6) { top: 25%; left: 0; }
+
+        .p02-circular-core {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44%;
+            height: 44%;
+            background: radial-gradient(circle at top, var(--teal) 0%, #206070 100%);
+            border: 8px solid #ffffff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            padding: 1rem;
+            z-index: 1;
+        }
+        .p02-circular-core h4 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 0.3rem;
+            line-height: 1.1;
+        }
+        .p02-circular-core p {
+            color: rgba(255,255,255,0.92);
+            font-size: 0.78rem;
+            line-height: 1.35;
+            margin: 0;
+        }
+
+        /* ── Six Pillars ── */
+        .p02-pillars {
+            background: #ffffff;
+            padding: 5rem 0;
+        }
+        .p02-pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+        .p02-pillar {
+            background: var(--gray-bg);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            border-top: 3px solid var(--teal);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .p02-pillar:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        .p02-pillar-num {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--teal);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 0.6rem;
+        }
+        .p02-pillar h4 {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        .p02-pillar p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /* ── Transformance ── */
+        .p02-transformance {
+            background: var(--gray-bg);
+            padding: 5rem 0;
+        }
+        .p02-two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2.5rem;
+        }
+        .p02-text-block h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 2px solid var(--teal);
+        }
+        .p02-text-block p {
+            font-size: 0.92rem;
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .p02-quote {
+            background: #ffffff;
+            border-left: 4px solid var(--teal);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .p02-quote p {
+            font-family: var(--font-display);
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--dark);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* ── Sustainable Thinking Steps ── */
+        .p02-steps {
+            background: var(--dark);
+            padding: 5rem 0;
+        }
+        .p02-steps-intro {
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+        }
+        .p02-steps-intro p {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.8;
+        }
+        .p02-steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .p02-step {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: var(--radius-lg);
+            padding: 1.6rem;
+            transition: border-color 0.2s;
+        }
+        .p02-step:hover { border-color: rgba(54,117,137,0.3); }
+        .p02-step-idx {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--teal-light);
+            margin-bottom: 0.5rem;
+        }
+        .p02-step h4 {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+        .p02-step p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.65;
+        }
+
+        /* ── WIIFU ── */
+        .p02-wiifu {
+            background: #ffffff;
+            padding: 5rem 0;
+        }
+        .p02-wiifu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+        .p02-wiifu-card {
+            background: var(--gray-bg);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            border-top: 3px solid var(--teal);
+            transition: transform 0.2s;
+        }
+        .p02-wiifu-card:hover { transform: translateY(-3px); }
+        .p02-wiifu-label {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 0.6rem;
+        }
+        .p02-wiifu-card h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.85rem;
+        }
+        .p02-wiifu-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .p02-wiifu-list li {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.65;
+            padding: 0.35rem 0;
+            padding-left: 1rem;
+            position: relative;
+        }
+        .p02-wiifu-list li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+            font-weight: 700;
+        }
+
+        /* ── Corporations ── */
+        .p02-corp {
+            background: var(--gray-bg);
+            padding: 5rem 0;
+        }
+            .p02-corp .section-header {
+                max-width: 1080px;
+                margin-bottom: 2.75rem;
+            }
+            .p02-corp .section-desc {
+                max-width: 900px;
+            }
+        .p02-corp-body {
+                display: grid;
+                grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.95fr);
+                gap: 1.5rem 2rem;
+                max-width: 1180px;
+                margin-top: 2rem;
+                align-items: start;
+        }
+        .p02-corp-body p {
+                font-size: 1rem;
+            color: var(--muted);
+                line-height: 1.85;
+                margin-bottom: 0;
+        }
+            .p02-corp-body > p:nth-child(1) {
+                grid-column: 1;
+            }
+            .p02-corp-body > p:nth-child(2) {
+                grid-column: 2;
+            }
+        .p02-corp-body .p02-quote {
+                grid-column: 1 / -1;
+                margin: 0.5rem 0;
+            }
+            .p02-corp-body > p:last-child {
+                grid-column: 1 / -1;
+                max-width: 1100px;
+        }
+
+        /* ── Students ── */
+        .p02-students {
+            background: #ffffff;
+            padding: 5rem 0;
+        }
+        .p02-students-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+        .p02-student-card {
+            background: var(--gray-bg);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            border-top: 3px solid var(--gold);
+        }
+        .p02-student-card h4 {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.6rem;
+        }
+        .p02-student-card p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        /* ── Benefits ── */
+        .p02-benefits {
+            background: var(--dark);
+            padding: 5rem 0;
+        }
+        .p02-benefits-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+        }
+        .p02-benefit-panel {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: var(--radius-lg);
+            padding: 2rem 2.25rem;
+        }
+        .p02-benefit-panel h3 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .p02-benefit-panel h3 .tag {
+            background: rgba(54,117,137,0.15);
+            color: var(--teal-light);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.2rem 0.55rem;
+            border-radius: 100px;
+        }
+        .p02-benefit-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .p02-benefit-list li {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.7;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+        }
+        .p02-benefit-list li:last-child { border-bottom: none; }
+        .p02-benefit-list li::before {
+            content: '✓';
+            color: var(--teal-light);
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        /* ── Footer ── */
+        .p02-footer {
+            background: var(--dark);
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        .p02-footer h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+        }
+        .p02-footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .p02-footer-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.7rem 1.6rem;
+            font-family: var(--font-display);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            transition: all 0.2s;
+        }
+        .p02-footer-links .btn-primary {
+            background: var(--teal);
+            color: #ffffff;
+        }
+        .p02-footer-links .btn-primary:hover { background: #2a607a; }
+        .p02-footer-links .btn-ghost {
+            background: transparent;
+            border: 1.5px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.55);
+        }
+        .p02-footer-links .btn-ghost:hover {
+            border-color: var(--teal);
+            color: var(--teal-light);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .p02-pillars-grid,
+            .p02-steps-grid,
+            .p02-wiifu-grid { grid-template-columns: repeat(2, 1fr); }
+            .p02-two-col,
+            .p02-benefits-row,
+            .p02-students-grid { grid-template-columns: 1fr; }
+            .p02-impact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .p02-corp-body {
+                grid-template-columns: 1fr;
+                max-width: none;
+            }
+            .p02-corp-body > p:nth-child(1),
+            .p02-corp-body > p:nth-child(2),
+            .p02-corp-body .p02-quote,
+            .p02-corp-body > p:last-child {
+                grid-column: auto;
+            }
+            .p02-outcomes-grid,
+            .p02-circular-layout { grid-template-columns: 1fr; }
+            .p02-outcomes-grid {
+                grid-template-areas:
+                    'core'
+                    'n1'
+                    'n2'
+                    'n3'
+                    'n4'
+                    'n5'
+                    'n6'
+                    'n7'
+                    'n8';
+            }
+            .p02-outcome-core { min-height: 240px; border-radius: 32px; }
+            .p02-circular-wheel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .p02-circular-core {
+                grid-column: 1 / -1;
+                grid-row: auto;
+                min-height: 220px;
+            }
+        }
+        @media (max-width: 600px) {
+            .p02-pillars-grid,
+            .p02-steps-grid,
+            .p02-wiifu-grid,
+            .p02-students-grid { grid-template-columns: 1fr; }
+            .p02-graphic-shell { padding: 1.25rem; border-radius: 22px; }
+            .p02-impact-grid,
+            .p02-circular-wheel { grid-template-columns: 1fr; }
+            .p02-impact-foundation ul { justify-content: flex-start; }
+            .p02-corp .section-header {
+                margin-bottom: 2rem;
+            }
+            .p02-corp-body {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-text">Mercury<span class="logo-spc">SPC</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html#philosophy">Cornerstone</a>
+                <a href="index.html#what-we-do">What We Do</a>
+                <a href="index.html#traditional-stewardship">Traditional stewardship</a>
+                <a href="index.html#team">Team</a>
+                <a href="index.html#contact" class="nav-cta">Partner With Us</a>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ==============================
+         HERO
+    ============================== -->
+    <header class="p02-hero">
+        <div class="container">
+            <a href="green-rinsing-execution.html" class="p02-back">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3L5 8l5 5"/></svg>
+                Go Back
+            </a>
+            <div class="p02-hero-badge">Project 02</div>
+            <h1>The <span>Doctrine</span></h1>
+            <div class="p02-hero-tagline">The Mercury SPC Fiscally Positive Sustainability Doctrine (FPSD)</div>
+            <p>Sustainability in design and sustainable development is not a scientific issue — it is a human issue with a huge economic overtone.</p>
+        </div>
+    </header>
+
+    <section class="p02-graphic-band" style="background: #ffffff; padding: 5rem 0;">
+        <div class="container">
+            <div class="p02-graphic-shell p02-impact-shell">
+                <div class="p02-graphic-title">
+                    <h3>Why Sustainable Thinking Transformance?</h3>
+                </div>
+                <div class="p02-impact-grid">
+                    <article class="p02-impact-card">
+                        <h4>Profitability</h4>
+                        <p>Better operational performance in 88% of companies. Good for pocket and planet.</p>
+                    </article>
+                    <article class="p02-impact-card">
+                        <h4>Regulatory Compliance</h4>
+                        <p>Greater strategic freedom through deregulation; earn subsidies and government support.</p>
+                    </article>
+                    <article class="p02-impact-card">
+                        <h4>Company USP</h4>
+                        <p>Being an early adopter or entrant creates a first mover advantage.</p>
+                    </article>
+                    <article class="p02-impact-card">
+                        <h4>Branding &amp; Recognition</h4>
+                        <p>Enhanced branding and perception due to wide ranging impact.</p>
+                    </article>
+                    <article class="p02-impact-card">
+                        <h4>Top Line Growth</h4>
+                        <p>Tap new markets, attract new B2B and B2C customers, and gain better access to resources.</p>
+                    </article>
+                    <article class="p02-impact-card">
+                        <h4>Higher Employee Productivity</h4>
+                        <p>Boost employee motivation and attract talent with enhanced social credibility.</p>
+                    </article>
+                    <article class="p02-impact-card">
+                        <h4>Lower Cost</h4>
+                        <p>Lower energy consumption, reduced resource intake, and easier access to finance.</p>
+                    </article>
+                    <article class="p02-impact-card">
+                        <h4>Conscious Capital</h4>
+                        <p>Lowered cost of capital for sustainability-compliant companies.</p>
+                    </article>
+                    <article class="p02-impact-card">
+                        <h4>Better Shareholder Returns</h4>
+                        <p>Better stock performance in 80% of companies.</p>
+                    </article>
+                    <article class="p02-impact-card">
+                        <h4>Early Adopters</h4>
+                        <p>Target millennials (67% of millennial millionaires invest based on social factors).</p>
+                    </article>
+                </div>
+                <div class="p02-impact-foundation" style="margin-top: 3rem; background: #f8f9fa; padding: 2rem; border-radius: 20px; text-align: center; border: 1px solid rgba(0,0,0,0.05);">
+                    <h4 style="color: var(--teal); font-weight: 700; margin-bottom: 1rem; text-transform: none;">The Essential Foundation</h4>
+                    <p style="color: #666; font-size: 0.95rem; margin-bottom: 0;">Sustainable Thinking &bull; Cultural Transformation &bull; Leadership Vision &bull; Team Cohesion</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================
+         THE SIX PILLARS
+    ============================== -->
+    <section class="p02-pillars">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">The Six Pillars</h2>
+                <p class="section-desc">Foundational principles that transform sustainability from obligation to economic opportunity.</p>
+            </div>
+            <div class="p02-pillars-grid">
+                <div class="p02-pillar">
+                    <div class="p02-pillar-num">01</div>
+                    <h4>Community Involvement</h4>
+                    <p>Sustainability starts with community engagement and evolves into community economics — the foundation everything else builds upon.</p>
+                </div>
+                <div class="p02-pillar">
+                    <div class="p02-pillar-num">02</div>
+                    <h4>Economic Stimulus</h4>
+                    <p>Investment in defense and infrastructure are proven economic stimulators; the imperative is to shift focus towards sustainable infrastructure as the growth driver.</p>
+                </div>
+                <div class="p02-pillar">
+                    <div class="p02-pillar-num">03</div>
+                    <h4>Intelligent Infrastructure</h4>
+                    <p>Stimulating economies through infrastructure spending leads naturally to intelligent, sustainable development when the systems are designed with long-term thinking.</p>
+                </div>
+                <div class="p02-pillar">
+                    <div class="p02-pillar-num">04</div>
+                    <h4>Affordable Housing &amp; Public Transport</h4>
+                    <p>Building affordable housing and new public infrastructure stimulates the economy while promoting sustainable community living at scale.</p>
+                </div>
+                <div class="p02-pillar">
+                    <div class="p02-pillar-num">05</div>
+                    <h4>Carbon Sequestration</h4>
+                    <p>Regenerative agriculture and integrated urban-rural building systems can sequester carbon while creating new productive land-use economies.</p>
+                </div>
+                <div class="p02-pillar">
+                    <div class="p02-pillar-num">06</div>
+                    <h4>Holistic Benefits</h4>
+                    <p>Sustainable development will make organisations — and the communities they serve — wealthier, healthier, and wiser. That is the full-spectrum return.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================
+         JOURNEY OF TRANSFORMANCE
+    ============================== -->
+    <section class="p02-transformance">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">The Journey of Transformance</h2>
+                <p class="section-desc">Sustainable Thinking, used as a wedge tool, leads to Cohesion, Collaboration, Calibration, Culture Reconstruction — and thereby Transformance.</p>
+            </div>
+            <div class="p02-two-col">
+                <div class="p02-text-block">
+                    <h3>Part 1 — Awareness to Action</h3>
+                    <p>Use the incoming mandate imperative as a welcome positive to start thinking of sustainable and sustainability in broader terms than just the environment.</p>
+                    <p>The concept of sustainability starts with <strong>awareness</strong> as a first step in the short term; <strong>planning and vision construction</strong> in the medium term; and <strong>outcomes and benefits</strong> in the long term. It is not, largely, a quick-fix short-term solution.</p>
+                    <div class="p02-quote">
+                        <p>"Now thanks to Sustainability we have tapped the first layer of medium to long-term thinking — which is certainly not quarterly driven but perhaps quarterly monitored."</p>
+                    </div>
+                    <p>Which is why medium long-term practices of companies are usually only appreciated by promoters, boards and customers — without realising it, you have the trifecta of audiences when it comes to medium and long-term awareness.</p>
+                </div>
+                <div class="p02-text-block">
+                    <h3>Part 2 — Capital Truth</h3>
+                    <p>Sustainability Transformance encompasses the willingness and ability to change what you produce and how you produce it vis-à-vis the world and the people that inhabit it. It's the Process-to-Planet part of the system.</p>
+                    <p>When you are able to transform what and how you do what you do, it means you are using sustainable thinking to <strong>alter, calibrate and pivot</strong> your process and methodology — which only comes from and denotes an ability and willingness to change.</p>
+                    <div class="p02-quote">
+                        <p>"Only when employees and stakeholders agree to the collective Capital Truth does cemented cohesion lead to actual capital growth — and when this happens, it's all hands on deck."</p>
+                    </div>
+                    <p>It's like the monsoons — if it's going to rain increasingly unpredictably, then farmers have had to, and have already begun to adapt. Adaption is the imperative in these dynamic times.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================
+         STEPS TO SUSTAINABLE DEVELOPMENT
+    ============================== -->
+    <section class="p02-steps">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Steps To Sustainable Development</h2>
+                <p class="section-desc">A medical analogy — system change follows six sequential steps, each preparing the organisation for deeper transformation.</p>
+            </div>
+            <div class="p02-steps-intro">
+                <p>System Design Thinking for sustainability involves using systemic thinking to understand the complex web of interrelations. Sustainable architecture integrates the natural environment with food, social, education, and health systems. System change follows six steps: experiencing the need for change, diagnosing the system, pioneering new practices, enabling tipping points, sustaining transitions, and setting new mainstream rules.</p>
+            </div>
+
+            <div class="p02-steps-grid">
+                <div class="p02-step">
+                    <div class="p02-step-idx">Step 01</div>
+                    <h4>GP — Awareness &amp; Initial Diagnosis</h4>
+                    <p>Experiencing the need for change. The first conversation; building awareness of where the organisation currently stands.</p>
+                </div>
+                <div class="p02-step">
+                    <div class="p02-step-idx">Step 02</div>
+                    <h4>Pathology — First Deep Investigation</h4>
+                    <p>Diagnosing the system. A deeper investigation into values, processes, and the gap between stated and lived sustainability.</p>
+                </div>
+                <div class="p02-step">
+                    <div class="p02-step-idx">Step 03</div>
+                    <h4>Radiology — Comprehensive Diagnosis</h4>
+                    <p>Pioneering new practices. Comprehensive diagnosis and forward planning — vision to risk assessment for operational execution.</p>
+                </div>
+                <div class="p02-step">
+                    <div class="p02-step-idx">Step 04</div>
+                    <h4>Anaesthesiology — Stabilisation</h4>
+                    <p>Enabling tipping points. Prepping the organisation for transformation — ensuring stability and monitoring through the change process.</p>
+                </div>
+                <div class="p02-step">
+                    <div class="p02-step-idx">Step 05</div>
+                    <h4>Surgery — Precision Execution</h4>
+                    <p>Sustaining transitions. Surgical precision assisted by the latest technology, both software and hardware, overseen by expert teams.</p>
+                </div>
+                <div class="p02-step">
+                    <div class="p02-step-idx">Step 06</div>
+                    <h4>Post-Operative Care — Oversight</h4>
+                    <p>Setting new mainstream rules. Physio conditioning — the final step to strengthening, oversight and forward movement for optimal outcomes.</p>
+                </div>
+            </div>
+
+            <!-- Redesigned Sustainable & Circular Thinking Graphic -->
+            <div class="p02-graphic-shell p02-circular-shell" style="margin: 5rem 0 2rem;">
+                <div class="p02-graphic-title">
+                    <h3>Sustainable &amp; Circular Thinking</h3>
+                </div>
+                <div class="p02-circular-layout">
+                    <div class="p02-circular-notes">
+                        <div class="p02-circular-note">
+                            <h4>Lateral and Flexible Thinking</h4>
+                            <p>Thinking outside the box, using convergent and divergent thinking, indirect and creative approaches, disruptive reasoning and approach.</p>
+                        </div>
+                        <div class="p02-circular-note">
+                            <h4>Enablement Experts (EE)</h4>
+                            <p>We enable you and your teams to identify problems, brainstorm solutions, carve out the best path and move into seamless implementation.</p>
+                        </div>
+                        <div class="p02-circular-note">
+                            <h4>Endless Possibilities Myriad Solutions</h4>
+                            <p>Circular thinking leads to endless possibilities, co-crafted with you and a myriad of collaborative, bespoke solutions.</p>
+                        </div>
+                    </div>
+                    <div class="p02-circular-wheel-wrap">
+                        <div class="p02-circular-wheel">
+                            <div class="p02-circular-facet">Lateral and flexible thinking</div>
+                            <div class="p02-circular-facet">Discover your own way</div>
+                            <div class="p02-circular-facet">Perspective without prejudice</div>
+                            <div class="p02-circular-facet">Transform Transcend</div>
+                            <div class="p02-circular-facet">Endless Possibilities Myriad Solutions</div>
+                            <div class="p02-circular-facet">Enablement experts (EE)</div>
+                            <div class="p02-circular-core">
+                                <div>
+                                    <h4>Circularity</h4>
+                                    <p>Confluence of 360&deg; Change</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p02-circular-notes">
+                        <div class="p02-circular-note">
+                            <h4>Discover Your Own Way</h4>
+                            <p>Logical reporting relationships, management support, quality inputs, realistic policies, meaningful mission statement etc.</p>
+                        </div>
+                        <div class="p02-circular-note">
+                            <h4>Perspective Without Prejudice</h4>
+                            <p>Your business level view of your system involves augmented consulting expertise basis your needs and understanding.</p>
+                        </div>
+                        <div class="p02-circular-note">
+                            <h4>Transform and Transcend</h4>
+                            <p>Fundamental changes in how a business or organization runs. This includes personnel, processes, and technology.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================
+         WIIFU — WHAT'S IN IT FOR US
+    ============================== -->
+    <section class="p02-wiifu">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What's In It For Us? (WIIFU)</h2>
+                <p class="section-desc">The WIIFU Framework maps benefits for every stakeholder layer — ensuring sustainability is a shared, rational, self-interested commitment.</p>
+            </div>
+            <div class="p02-wiifu-grid">
+                <div class="p02-wiifu-card">
+                    <div class="p02-wiifu-label">Stakeholder A</div>
+                    <h4>C-Suite, Employees &amp; Consumers</h4>
+                    <ul class="p02-wiifu-list">
+                        <li>Top-line growth through sustainable positioning</li>
+                        <li>Reduced operating costs (raw materials, water, carbon)</li>
+                        <li>Enhanced investment returns via capital reallocation</li>
+                        <li>Attract &amp; retain quality employees</li>
+                        <li>Increased motivation and productivity</li>
+                        <li>Positive correlation: employee satisfaction ↔ shareholder returns</li>
+                    </ul>
+                </div>
+                <div class="p02-wiifu-card">
+                    <div class="p02-wiifu-label">Stakeholder B</div>
+                    <h4>Governments &amp; Citizens</h4>
+                    <ul class="p02-wiifu-list">
+                        <li>Reduced regulatory and legal intervention</li>
+                        <li>Government support for sustainability-active enterprises</li>
+                        <li>Intelligent sustainable infrastructure investment</li>
+                        <li>Affordable housing and public transport solutions</li>
+                        <li>Community economics and carbon sequestration outcomes</li>
+                        <li>Positive public perception and social stakeholder trust</li>
+                    </ul>
+                </div>
+                <div class="p02-wiifu-card">
+                    <div class="p02-wiifu-label">Stakeholder C</div>
+                    <h4>Government, Local &amp; Regional Partners</h4>
+                    <ul class="p02-wiifu-list">
+                        <li>Think Tank Approach: leadership conclave &amp; symposium</li>
+                        <li>Actuation plan to direct &amp; oversee execution initiatives</li>
+                        <li>Long-term retention of employees who understand WIIFU</li>
+                        <li>Optimised capital expenditure and investment allocation</li>
+                        <li>Wealthier, healthier, wiser communities</li>
+                        <li>The trifecta of audiences aligned to Capital Truth</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================
+         CORPORATIONS — TRANSFORMANCE
+    ============================== -->
+    <section class="p02-corp">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Sustainability Transformance — Corporations</h2>
+                <p class="section-desc">Both government &amp; private owned enterprises.</p>
+            </div>
+            <div class="p02-corp-body">
+                <p>The employees at corporations that understand WIIFU are those that will be the few identifiable employees who are retained to oversee long term goals — relatively unique in these times where corporations (employers) and employees no longer see employment as long term concepts.</p>
+                <p>At this point, the FWC/Mercury Sustainable Thinking Project will, at the outset, take a <strong>Think Tank Approach</strong> towards the setting up of a Leadership Conclave &amp; Symposium followed by an actuation plan to Direct &amp; Oversee executions of initiatives in order to ensure desired and planned outcomes.</p>
+                <div class="p02-quote">
+                    <p>"From an organisation's fiscal perspective, that denotes Transformance thinking — in Culture, Cohesion &amp; Collaboration — that leads to transformation in process &amp; execution, that leads to quantitative bottom line (Capital Truth) as well as brand capital mindshare."</p>
+                </div>
+                <p>The tools to survive in bad times and thrive in good times — utilising a seemingly esoteric concept for most corporates and adding it to the positive toolkit they will need in times of stagnation and/or recession. Not looking at Sustainable Thinking processes and mandates as a chore, but looking at this through a Positive lens, that is monetisable.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Redesigned Qualitative & Quantitative Outcomes Graphic -->
+    <section class="p02-graphic-band" style="background: #ffffff; padding: 0 0 5rem;">
+        <div class="container">
+            <div class="p02-graphic-shell p02-outcomes-shell">
+                <div class="p02-graphic-title" style="margin-bottom: 2rem;">
+                    <h3>Qualitative &amp; Quantitative Outcomes</h3>
+                </div>
+                <div class="p02-outcomes-grid">
+                    <article class="p02-outcome-node p02-outcome-node--1">
+                        <div class="p02-outcome-badge">1</div>
+                        <h4>Regulatory Compliance</h4>
+                    </article>
+                    <article class="p02-outcome-node p02-outcome-node--2">
+                        <div class="p02-outcome-badge">2</div>
+                        <h4>Company USP</h4>
+                    </article>
+                    <article class="p02-outcome-node p02-outcome-node--3">
+                        <div class="p02-outcome-badge">3</div>
+                        <h4>Branding &amp; Recognition</h4>
+                    </article>
+                    <article class="p02-outcome-node p02-outcome-node--4">
+                        <div class="p02-outcome-badge">4</div>
+                        <h4>Top Line Growth</h4>
+                    </article>
+                    <article class="p02-outcome-node p02-outcome-node--5">
+                        <div class="p02-outcome-badge">5</div>
+                        <h4>Higher Employee Productivity</h4>
+                    </article>
+                    <article class="p02-outcome-node p02-outcome-node--6">
+                        <div class="p02-outcome-badge">6</div>
+                        <h4>Lower Cost</h4>
+                    </article>
+                    <article class="p02-outcome-node p02-outcome-node--7">
+                        <div class="p02-outcome-badge">7</div>
+                        <h4>Conscious Capital</h4>
+                    </article>
+                    <article class="p02-outcome-node p02-outcome-node--8">
+                        <div class="p02-outcome-badge">8</div>
+                        <h4>Better Shareholder Returns</h4>
+                    </article>
+                    <div class="p02-outcome-core">
+                        <div>
+                            <h4>Benefits of Sustainable Thinking</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================
+         STUDENTS — NEXT GENERATION
+    ============================== -->
+    <section class="p02-students">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Sustainability Transformance — Students</h2>
+                <p class="section-desc">Building Mental Immunity: equipping the next generation with macro-level awareness to navigate economic and societal realities.</p>
+            </div>
+            <div class="p02-students-grid">
+                <div class="p02-student-card">
+                    <h4>Inherent Intelligence, Practical Awareness</h4>
+                    <p>The task is to use students' inherent intelligence and capability and help them build awareness of urban realities that will arise at the national/global level as they find placements — giving them the skills to navigate macro economic and societal news impact.</p>
+                </div>
+                <div class="p02-student-card">
+                    <h4>Macro, Micro &amp; Personal Resilience</h4>
+                    <p>This is not just simple work/pressure related stress. It is a strain on macro, micro &amp; personal levels that takes a toll on individuals, societies, and organisations at large — just like the basic steps one takes surviving a pandemic became part of daily regimens.</p>
+                </div>
+                <div class="p02-student-card">
+                    <h4>Building Mental Immunity</h4>
+                    <p>The aim is to build Mental Immunity that goes beyond meditation and conventional clinical psychology exercises — a deep, applicable resilience to macro economic change.</p>
+                </div>
+                <div class="p02-student-card">
+                    <h4>System Design Thinking</h4>
+                    <p>Sustainable building design uses cleaner, smarter materials, promotes green building, passive design, and low-maintenance techniques. It emphasizes leaner materials like bamboo and hemp fiber, retrofitting existing buildings, and integrating natural ecosystems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================
+         IMPLEMENTATION BENEFITS
+    ============================== -->
+    <section class="p02-benefits">
+        <div class="container">
+            <div class="section-header light">
+                <h2 class="section-title">Implementation Benefits</h2>
+                <p class="section-desc" style="color: rgba(255,255,255,0.5);">Those who implement Sustainable Thinking principles in their companies' to-do list are clear winners in the corporate world.</p>
+            </div>
+            <div class="p02-benefits-row">
+                <div class="p02-benefit-panel">
+                    <h3>Operational Impact <span class="tag">Part 1</span></h3>
+                    <ul class="p02-benefit-list">
+                        <li>Facilitates top-line growth</li>
+                        <li>Reduces costs across raw materials, water, and carbon</li>
+                        <li>Minimises regulatory and legal interventions</li>
+                        <li>Increases employee productivity and engagement</li>
+                        <li>Optimises investment and capital expenditures</li>
+                        <li>Reduces risk of adverse government action</li>
+                        <li>Engenders active government support and goodwill</li>
+                    </ul>
+                </div>
+                <div class="p02-benefit-panel">
+                    <h3>Long-Term Capital Returns <span class="tag">Part 2</span></h3>
+                    <ul class="p02-benefit-list">
+                        <li>Operating profit impact up to 60% from sustainable cost management</li>
+                        <li>Enhanced investment returns through reallocation to renewables &amp; waste reduction</li>
+                        <li>Positive correlation: social impact ↔ job satisfaction</li>
+                        <li>Stronger brand capital mindshare with customers, government &amp; shareholders</li>
+                        <li>Better employee retention through instilled sense of purpose</li>
+                        <li>Long-term engagement, care solutions, and growth credibility</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================
+         FOOTER
+    ============================== -->
+    <footer class="p02-footer">
+        <div class="container">
+            <h3>Continue exploring</h3>
+            <div class="p02-footer-links">
+                <a href="project-01.html" class="btn-primary">&larr; Project 01 — Forums &amp; Conclaves</a>
+                <a href="green-rinsing-execution.html" class="btn-ghost">&larr; All Projects</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script-v2.js"></script>
+</body>
+</html>

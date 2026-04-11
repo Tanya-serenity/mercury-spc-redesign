@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Rinsing Execution | Mercury SPC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles-v2.css">
+    <style>
+        body { background: var(--dark); margin: 0; }
+
+        /* ── Back Link ── */
+        .gre-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.45);
+            font-size: 0.85rem;
+            font-family: var(--font-display);
+            letter-spacing: 0.04em;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .gre-back:hover { color: var(--teal-light); }
+        .gre-back svg { width: 16px; height: 16px; }
+
+        /* ── Hero ── */
+        .gre-hero {
+            background: var(--dark);
+            padding: 9rem 0 4rem;
+        }
+        .gre-hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: #ffffff;
+            margin-top: 2rem;
+            line-height: 1.2;
+        }
+        .gre-hero-title span { color: var(--teal-light); }
+        .gre-hero-sub {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.7;
+            margin-top: 1rem;
+            max-width: 540px;
+        }
+
+        /* ── Project Cards Grid ── */
+        .gre-projects {
+            background: var(--dark);
+            padding: 0 0 6rem;
+        }
+        .gre-projects-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 6rem;
+        }
+
+        /* ── Single Project Card ── */
+        .gre-project {
+            position: relative;
+        }
+        .gre-project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        .gre-project-info {
+            max-width: 380px;
+        }
+        .gre-project-info h3 {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.35;
+            margin-bottom: 1.25rem;
+        }
+        .gre-learn-more {
+            font-family: var(--font-display);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            color: var(--teal-light);
+            text-decoration: none;
+            text-transform: capitalize;
+            transition: color 0.2s;
+        }
+        .gre-learn-more:hover { color: #ffffff; }
+
+        /* Dotted accent (vertical teal dots) */
+        .gre-dots {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding-top: 0.25rem;
+        }
+        .gre-dots span {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--teal);
+        }
+
+        /* ── Number + Line ── */
+        .gre-project-divider {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            margin-bottom: 2rem;
+        }
+        .gre-project-line {
+            height: 3px;
+            background: var(--teal);
+            flex: 0 0 180px;
+        }
+        .gre-project-num {
+            font-family: var(--font-display);
+            font-size: clamp(4rem, 8vw, 7rem);
+            font-weight: 700;
+            color: rgba(255,255,255,0.08);
+            line-height: 1;
+            margin-left: auto;
+        }
+
+        /* ── Image Gallery ── */
+        .gre-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .gre-img-slot {
+            background: rgba(255,255,255,0.04);
+            border: 1px dashed rgba(255,255,255,0.1);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .gre-img-slot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(100%);
+            transition: filter 0.4s;
+        }
+        .gre-img-slot:hover img { filter: grayscale(0%); }
+        .gre-img-placeholder {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.2);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        /* Offset second image down like reference */
+        .gre-images .gre-img-slot:nth-child(2) {
+            margin-top: 3rem;
+        }
+
+        /* ── Project bottom title ── */
+        .gre-project-bottom {
+            margin-top: 1.5rem;
+        }
+        .gre-project-bottom h4 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+        .gre-project-bottom .gre-learn-more {
+            font-size: 0.8rem;
+        }
+
+        /* ── Footer ── */
+        .gre-footer {
+            background: var(--dark);
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        .gre-footer p {
+            color: rgba(255,255,255,0.3);
+            font-size: 0.82rem;
+        }
+        .gre-footer a {
+            color: var(--teal-light);
+            text-decoration: none;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .gre-project-header { flex-direction: column; gap: 1rem; }
+            .gre-dots { flex-direction: row; }
+            .gre-images { grid-template-columns: 1fr; }
+            .gre-images .gre-img-slot:nth-child(2) { margin-top: 0; }
+            .gre-project-line { flex: 0 0 100px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-text">Mercury<span class="logo-spc">SPC</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html#philosophy">Cornerstone</a>
+                <a href="index.html#what-we-do">What We Do</a>
+                <a href="index.html#traditional-stewardship">Traditional stewardship</a>
+                <a href="index.html#team">Team</a>
+                <a href="index.html#contact" class="nav-cta">Partner With Us</a>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ==============================
+         HERO
+    ============================== -->
+    <header class="gre-hero">
+        <div class="container">
+            <a href="index.html#green-rinsing" class="gre-back">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3L5 8l5 5"/></svg>
+                Go Back
+            </a>
+            <h1 class="gre-hero-title"><span>Green Rinsing</span> Execution</h1>
+            <p class="gre-hero-sub">From thought leadership to doctrine — the projects that underpin Mercury SPC's sustainability execution framework.</p>
+        </div>
+    </header>
+
+    <!-- ==============================
+         PROJECT CARDS
+    ============================== -->
+    <section class="gre-projects">
+        <div class="container">
+            <div class="gre-projects-grid">
+
+                <!-- ── PROJECT 01 ── -->
+                <div class="gre-project">
+                    <div class="gre-project-header">
+                        <div class="gre-project-info">
+                            <h3>Thought Leadership In Action (Sustainability Forums &amp; Conclaves)</h3>
+                            <a href="project-01.html" class="gre-learn-more">Learn More</a>
+                        </div>
+                        <div class="gre-dots">
+                            <span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+
+                    <div class="gre-project-divider">
+                        <div class="gre-project-line"></div>
+                        <div class="gre-project-num">01</div>
+                    </div>
+
+                    <div class="gre-images">
+                        <div class="gre-img-slot">
+                            <img src="Picture 7.jpg" alt="Sustainability Forum audience">
+                        </div>
+                        <div class="gre-img-slot">
+                            <img src="Picture 15.jpg" alt="Forum speaker on stage">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── PROJECT 02 ── -->
+                <div class="gre-project">
+                    <div class="gre-project-divider">
+                        <div class="gre-project-line"></div>
+                        <div class="gre-project-num">02</div>
+                    </div>
+
+                    <div class="gre-images">
+                        <div class="gre-img-slot">
+                            <img src="Picture 20.jpg" alt="Design Partner Dialogue">
+                        </div>
+                        <div class="gre-img-slot">
+                            <img src="Picture 12.jpg" alt="Sustainability Conclave panel">
+                        </div>
+                    </div>
+
+                    <div class="gre-project-bottom">
+                        <h4>The Doctrine</h4>
+                        <a href="project-02.html" class="gre-learn-more">Learn More</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==============================
+         FOOTER
+    ============================== -->
+    <footer class="gre-footer">
+        <div class="container">
+            <p>&copy; Mercury SPC &mdash; <a href="index.html">Return to Main</a></p>
+        </div>
+    </footer>
+
+    <script src="script-v2.js"></script>
+</body>
+</html>

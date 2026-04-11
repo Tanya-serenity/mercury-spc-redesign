@@ -207,6 +207,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === Mobile Menu Styles ===
     const style = document.createElement('style');
+
+    // === TS Consumer Sketch — draw lines on scroll ===
+    const sketchWrap = document.querySelector('.ts-consumer-sketch-wrap');
+    if (sketchWrap) {
+        const sketchObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelector('.ts-consumer-sketch')?.classList.add('ts-sketch-animated');
+                    sketchObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        sketchObserver.observe(sketchWrap);
+    }
+
+    // === TS Stats — count-up animation on scroll ===
+    const tsStatNumbers = document.querySelectorAll('.ts-stat-number');
+    if (tsStatNumbers.length) {
+        const countObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const el = entry.target;
+                const raw = el.getAttribute('data-count');
+                if (!raw) return;
+                const target = parseFloat(raw);
+                const prefix = el.getAttribute('data-prefix') || '';
+                const suffix = el.querySelector('.ts-stat-unit')?.outerHTML || '';
+                const isDecimal = raw.includes('.');
+                const duration = 1600;
+                const start = performance.now();
+                const animate = (now) => {
+                    const progress = Math.min((now - start) / duration, 1);
+                    const ease = 1 - Math.pow(1 - progress, 3);
+                    const current = isDecimal ? (target * ease).toFixed(1) : Math.round(target * ease);
+                    el.innerHTML = prefix + current + suffix;
+                    if (progress < 1) requestAnimationFrame(animate);
+                };
+                requestAnimationFrame(animate);
+                countObserver.unobserve(el);
+            });
+        }, { threshold: 0.4 });
+
+        tsStatNumbers.forEach(el => {
+            // Extract numeric value from text, store as data-count
+            const text = el.textContent.trim();
+            const numMatch = text.match(/[\d.]+/);
+            if (numMatch) {
+                el.setAttribute('data-count', numMatch[0]);
+                const prefix = text.match(/^[^\d]*/)[0];
+                if (prefix) el.setAttribute('data-prefix', prefix);
+            }
+            countObserver.observe(el);
+        });
+    }
+
     style.textContent = `
         @media (max-width: 768px) {
             .nav-links {
