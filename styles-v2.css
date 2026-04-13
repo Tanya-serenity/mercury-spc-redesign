@@ -558,6 +558,10 @@ h1, h2, h3, h4, h5, h6 {
     font-size: clamp(1.6rem, 3vw, 2.4rem);
 }
 
+.section-header + .strategic-intro-block {
+    margin-top: -1.75rem;
+}
+
 .section-dark .section-title {
     color: var(--light);
 }
@@ -3071,6 +3075,17 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0;
 }
 
+.ts-consumer-emphasis {
+    color: var(--teal);
+    font: inherit;
+    font-weight: 700;
+}
+
+.ts-consumer-followup {
+    display: block;
+    margin-top: 1rem;
+}
+
 /* Sketch diagram */
 .ts-consumer-sketch-wrap {
     width: 100%;
@@ -3086,6 +3101,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     height: auto;
     display: block;
+    overflow: visible;
 }
 
 .ts-sketch-line {
