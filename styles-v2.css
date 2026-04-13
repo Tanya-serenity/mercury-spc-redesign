@@ -2757,6 +2757,38 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 3rem;
 }
 
+.ts-compliance-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.ts-compliance-label {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--red-glow);
+    letter-spacing: -0.01em;
+}
+
+.ts-compliance-arrow {
+    width: 18px;
+    height: 32px;
+    flex-shrink: 0;
+    transform: rotate(90deg);
+}
+
+.ts-compliance-note {
+    margin-top: 1.75rem;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--muted);
+    max-width: 760px;
+    border-left: 3px solid rgba(192, 80, 77, 0.35);
+    padding-left: 1.25rem;
+}
+
 .ts-facets-row {
     display: flex;
     flex-wrap: wrap;
