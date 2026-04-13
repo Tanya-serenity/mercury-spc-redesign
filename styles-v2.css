@@ -2757,6 +2757,15 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 3rem;
 }
 
+.ts-classical-intro {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--teal);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    letter-spacing: 0.01em;
+}
+
 .ts-compliance-header {
     display: flex;
     align-items: center;
