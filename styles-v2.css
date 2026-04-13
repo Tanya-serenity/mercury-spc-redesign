@@ -537,7 +537,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .section-tag {
     display: inline-block;
-    font-size: 1rem;
+    font-size: 1.15rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.17em;
@@ -2874,7 +2874,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .ts-neutral-label {
     font-family: var(--font-display);
-    font-size: 0.8rem;
+    font-size: 1.15rem;
     font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
