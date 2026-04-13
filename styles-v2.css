@@ -986,15 +986,18 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Cactus Illustration Layout */
 .cactus-illustration-wrap {
-    margin: 3rem auto 0;
+    margin: 1.5rem auto 0;
     max-width: 560px;
 }
 
 .cactus-top-labels {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 0.5rem;
+    align-items: flex-end;
+    margin-bottom: -1.5rem;
+    position: relative;
+    z-index: 5;
+    padding: 0 1rem;
 }
 
 .cactus-label {
